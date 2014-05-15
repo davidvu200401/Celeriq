@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3323481F-8C16-4913-A200-A3A992442974}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Celeriq.DataCore.EFDAL</RootNamespace>
+    <AssemblyName>Celeriq.DataCore.EFDAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Celeriq.DataCore.EFDAL.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nHydrate.EFCore">
+      <HintPath>..\ThirdParty\nHydrate.EFCore.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Docs\AssemblyInfoGlobal.cs">
+      <Link>Properties\AssemblyInfoGlobal.cs</Link>
+    </Compile>
+    <Compile Include="ContextStartup.cs" />
+    <Compile Include="ContextStartup.Generated.cs">
+      <DependentUpon>ContextStartup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataCoreEntities.cs" />
+    <Compile Include="DataCoreEntities.Generated.cs">
+      <DependentUpon>DataCoreEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataCoreEntitiesExtensions.cs" />
+    <Compile Include="DataCoreEntitiesExtensions.Generated.cs">
+      <DependentUpon>DataCoreEntitiesExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataCoreEntitiesInclude.Generated.cs">
+      <DependentUpon>DataCoreEntitiesIncludes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataCoreEntitiesIncludes.cs" />
+    <Compile Include="DataCoreEntitiesQueries.cs" />
+    <Compile Include="DataCoreEntitiesQueries.Generated.cs">
+      <DependentUpon>DataCoreEntitiesQueries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ConfigurationSetting.cs" />
+    <Compile Include="Entity\ConfigurationSetting.Generated.cs">
+      <DependentUpon>ConfigurationSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DimensionData.cs" />
+    <Compile Include="Entity\DimensionData.Generated.cs">
+      <DependentUpon>DimensionData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DimensionStore.cs" />
+    <Compile Include="Entity\DimensionStore.Generated.cs">
+      <DependentUpon>DimensionStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\RepositoryActionType.cs" />
+    <Compile Include="Entity\RepositoryActionType.Generated.cs">
+      <DependentUpon>RepositoryActionType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\RepositoryData.cs" />
+    <Compile Include="Entity\RepositoryData.Generated.cs">
+      <DependentUpon>RepositoryData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\RepositoryDefinition.cs" />
+    <Compile Include="Entity\RepositoryDefinition.Generated.cs">
+      <DependentUpon>RepositoryDefinition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\RepositoryLog.cs" />
+    <Compile Include="Entity\RepositoryLog.Generated.cs">
+      <DependentUpon>RepositoryLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\RepositoryStat.cs" />
+    <Compile Include="Entity\RepositoryStat.Generated.cs">
+      <DependentUpon>RepositoryStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ServerStat.cs" />
+    <Compile Include="Entity\ServerStat.Generated.cs">
+      <DependentUpon>ServerStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserAccount.cs" />
+    <Compile Include="Entity\UserAccount.Generated.cs">
+      <DependentUpon>UserAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globals.cs" />
+    <Compile Include="Globals.Generated.cs">
+      <DependentUpon>Globals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LinqSQLParser.cs" />
+    <Compile Include="LinqSQLParser.Generated.cs">
+      <DependentUpon>LinqSQLParser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataCore.csdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataCore.msl" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataCore.ssdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Celeriq.DataCore.EFDAL.Interfaces\Celeriq.DataCore.EFDAL.Interfaces.csproj">
+      <Project>{f41c1a91-5a71-4bf8-add0-a4aba23c7e28}</Project>
+      <Name>Celeriq.DataCore.EFDAL.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+			 Other similar extension points exist, see Microsoft.Common.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetName).*" "$(SolutionDir)Bin\"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>if not exist "$(SolutionDir)bin" mkdir "$(SolutionDir)bin"
+attrib -r "$(SolutionDir)Bin\*.*"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

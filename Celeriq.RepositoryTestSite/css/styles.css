@@ -1,0 +1,449 @@
+﻿body {
+    font-family:Verdana, helvetica,sans-serif;
+    font-size:10pt;
+    background-color:#FDF9EE;
+}
+
+table,table tr,table td {
+    vertical-align:top;
+}
+
+.mastercontainer {
+    min-width:900px;
+    max-width:1400px;
+    margin:0px 20px 0px 20px;
+    text-align:left;
+}
+
+.mainblock {
+    background-color:white;
+    border:solid 1px #DDD7C6;
+    padding:5px;
+}
+
+.header {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.footer {
+    clear: both;
+    margin: 10px 0px 10px 0px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.bigboxes input[type="text"],
+.bigboxes textarea,
+.bigboxes input[type="password"],
+.bigboxes input[type="email"] {
+    -webkit-appearance: none;
+    border: 1px solid #ccc;
+    width: 307px;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.bigboxes textarea { height: 100px; }
+
+.bigboxes select {
+    border: 1px solid #ccc;
+    width: 320px;
+    padding: 0px 0px 0px 10px;
+    margin: 0px 0px 8px 0px;
+    padding: 4px;
+    font-size: 18px;
+}
+
+.bigboxes select[multiple=multiple] { height: auto; }
+
+.bigboxes input[type="checkbox"] {
+    border: 1px solid #ccc;
+    margin: 0px 10px 0px 0px;
+}
+
+.logo
+{
+    font-size:20pt;
+    color:Gray;
+    font-weight:bold;
+}
+
+.logo a
+{
+    text-decoration:none;
+    color:Gray;
+}
+
+.logo a:hover
+{
+    text-decoration:none;
+}
+
+.logo img
+{	
+border-width:0px;
+}
+
+.bigboxes label
+{
+    font-weight: bold;
+}
+
+.bigboxes .label {
+    font-weight: bold;
+    width: 320px;
+    margin: 10px 0px 20px 0px;
+    text-indent: 0;
+    display: inline-block;
+}
+
+.bigboxes .label label[for] {
+    margin: 0px;
+    padding: 0px;
+}
+
+.bigboxes input[type="radio"] { margin: 0px 5px 5px 0px; }
+
+input[type="radio"] { margin-bottom: 6px; }
+
+.bigboxes .radioblock { margin-bottom: 8px; }
+
+.prettygrid {
+    border: solid 1px #cccccc;
+    border-right: 0px;
+    width: 100%;
+}
+
+.prettygrid td, .prettygrid th {
+    padding: 4px 2px 4px 0px;
+    border-bottom: solid 1px #cccccc;
+    border-right: solid 1px #cccccc;
+}
+
+.prettygrid th {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.prettygrid td, .prettygrid tr, .prettygrid th {
+    text-indent: 8px;
+    padding-left: 8px;
+    vertical-align: middle;
+}
+
+.prettygrid .prettygrid-row:hover, .prettygrid-rowalt:hover {
+    background-color: #C5E0F3;
+    color: black;
+}
+
+.prettygrid .prettygrid-row:hover a, .prettygrid-rowalt:hover a {
+    color: black;
+    text-decoration: underline;
+}
+
+.prettygrid.selectable td:hover { cursor: pointer; }
+
+.prettygrid tr.selected {
+    background-color: #277BB8;
+    color: white;
+}
+
+.prettygrid tr.selected a {
+    color: White;
+    text-decoration: underline;
+}
+
+.prettygrid a { text-decoration: none; }
+
+.prettygrid img.sort { margin: 0px 0px 0px 6px; }
+
+.prettygrid-header {
+    background-color: #555555;
+    border-bottom: solid 1px #cccccc;
+    color: white;
+    font-size: 10pt;
+}
+
+.prettygrid-header a {
+    color: white;
+    text-decoration: none;
+}
+
+.prettygrid-header a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.prettygrid-row {
+    background-color: white;
+    color: #767676;
+    font-size: 10pt;
+}
+
+.prettygrid-rowalt {
+    background-color: #e5e8e8;
+    color: #767676;
+    font-size: 10pt;
+}
+
+.prettygrid-empty {
+    text-shadow: 0 1px 1px #fff;
+    color: #1d95cb;
+    border-color: #9aceea;
+    background-color: #d9edf7;
+    background-color: #c1deed;
+    background-image: -webkit-linear-gradient(top, #d8edf7, #c1deed);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 0 #000;
+    padding: 0px;
+    margin: 0px;
+}
+
+.dimensionblock { 
+    XXborder-bottom: 1px solid #c8c8c8; 
+}
+
+.dimensioncontainer {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom:4px;
+}
+
+.dimensioncontainer a { }
+
+.appliedfilterheader {
+    font-weight: bold;
+    padding: 4px;
+    margin: 0px;
+    padding: 3px 3px 3px 3px;
+    background-color: #dddddd;
+    border: solid 1px #ccc;
+}
+
+.dimensionheader {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.dimensionheader a { 
+    font-weight: bold;
+}
+
+.dimensionheader h4 {
+    background-color: rgba(250, 250, 250, 0.9);
+    border: 1px solid #d0d0d0;
+    padding: 4px;
+    margin:0px;
+    font-size: 12pt;
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.9) 0%, rgba(250, 250, 250, 0.9) 100%);
+}
+
+.dimensionheader h4 .toggle {
+    float: right;
+    margin-top: 3px;
+}
+
+.dimensionheader .g { margin: 0px 0px 0px 12px; }
+
+.dimensiondata {
+    padding: 4px;
+    font-size: 10pt;
+    border: solid 1px #ccc;
+    border-top:none;
+}
+
+.dimensiondata .fb { margin-bottom: 4px; }
+
+.dimensiondata a {
+    margin-left: 6px;
+    padding: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+
+.dimensiondata .prompt { color: #bbb; }
+
+.dimensioncontainer .cb {
+    display: inline-block;
+    padding: 2px 4px;
+    margin: 0;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.07);
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    font-style: normal;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid #fff;
+    -webkit-box-shadow: inset 0 1px 2px -1px rgba(0, 0, 0, 0.4), 0 0 0 #000;
+    box-shadow: inset 0 1px 2px -1px rgba(0, 0, 0, 0.4), 0 0 0 #000;
+}
+
+.detailcell {
+    padding: 4px;
+    margin-bottom: 0px;
+    overflow: hidden;
+    border-bottom: solid 2px #CCCCCC;
+}
+
+.detailcell a {
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.detailcellnormal {
+    font-weight: normal;
+    font-size: 10pt;
+    padding-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: normal;
+}
+
+.detailcellattention {
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.detailcelltitle {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.detailcelltitle a {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.detailcelltitle a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.detailcelltitle input[type=checkbox] { margin-right: 6px; }
+
+.detailcelldata {
+    border: solid 1px #aaaaaa;
+    background-color: #f5f5f5;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.results-action-block {
+    text-align: center;
+    background-color: #f5f5f5;
+    border: solid 1px #cccccc;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+.results-action-block .l { float: left; }
+
+.results-action-block .r { float: right; }
+
+
+/****************** paging ************/
+
+.paging {
+    border: solid 1px #ccc;
+    padding: 5px;
+    background-color: White;
+    margin: 10px 0px 0px 0px;
+    text-align: right;
+    color: #007DBA;
+}
+
+.paging span {
+    display: inline;
+    font-weight: normal;
+    cursor: pointer;
+    margin: 0px 2px 0px 2px;
+}
+
+.paging .p { float: left; }
+
+.paging span.sel {
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* PAGING NEW */
+
+.pagingcontainer {
+    text-align: left;
+    background-color: #C1F0F6;
+    padding: 0px 6px 0px 6px;
+    border: solid 1px #007DBA;
+    margin: 0px 0px 10px 0px;
+}
+
+.pagingcontainer h1 {
+    color: #555555;
+    font-size: 14pt;
+    font-weight: normal;
+}
+
+.pagingheader {
+    color: #555555;
+    font-size: 14pt;
+    font-weight: normal;
+}
+
+.pagingtextsmall {
+    color: #555555;
+    font-size: 10pt;
+    font-weight: normal;
+    font-weight: bold;
+}
+
+.pagingtexthilite a {
+    color: #006692;
+    font-size: 10pt;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.paginggotopage {
+    color: #555555;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.paginggotopage a {
+    color: #006692;
+    text-decoration: none;
+}
+
+.paginggotopageselected {
+    color: #555555;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+/*************************************/
+
+.resultsfilter {
+    border: solid 1px #cccccc;
+    background-color: #f2f2f2;
+    padding: 3px 0px 0px 10px;
+    margin: 4px 0px 5px 0px;
+    min-height: 28px;
+    vertical-align: middle;
+    background-color: #FFFAF0;
+    font-size: 10pt;
+}
+
+.resultsfilter .prompt { }
+
+.resultsfilter .data {
+    font-style: italic;
+    color: green;
+}

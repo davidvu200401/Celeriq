@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<configuration type="entity" name="RepositoryStat" id="3ff6b47a-eb8b-4f2f-af0f-24d0a0f985f4" allowaudittracking="0" allowcreateaudit="1" allowmodifyaudit="0" allowtimestamp="0" codefacade="" immutable="0" enforceprimarykey="1" isassociative="0" typedentity="None" schema="" generatesdoublederived="0" isgenerated="1" isTenant="0">
+		<summary><![CDATA[]]></summary>
+		<fieldset>
+				<field id="fac422a1-14bd-4fe9-b6f7-cf798377ece7" name="Count" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="5" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="3fd93320-fc90-42c1-a6ff-8f725cfadf45" name="Elapsed" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="4" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="3b33a68c-0352-46b5-bbe6-e8066d99d64d" name="ItemCount" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="8" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="5924b6db-59f4-41a2-bc4b-46842fe7eac8" name="RepositoryActionTypeId" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="4" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="03ad7bc1-dc99-4e8b-a2b0-b9031001e460" name="RepositoryId" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="3" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="978d0949-7970-4aab-a29c-5848c7c0b673" name="RepositoryStatId" nullable="0" datatype="Int" identity="Database" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="1" Iscalculated="0" isunique="1" length="4" scale="0" sortorder="1" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+		</fieldset>
+</configuration>

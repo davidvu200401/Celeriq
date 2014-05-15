@@ -1,0 +1,38 @@
+<repository>
+	<name>JobItem</name>
+	<createddate>2011-10-01</createddate>
+	<id>11111111-1111-1111-1111-111111111111</id>
+	<serverobjecttype>Celeriq.API.Q11111111111111111111111111111111.Service.API.RepositoryService</serverobjecttype>
+	<interfaceobjecttype>Celeriq.API.Q11111111111111111111111111111111.Interfaces.IDataModel</interfaceobjecttype>
+	<interfaceassembly>Celeriq.API.Q11111111111111111111111111111111.Interfaces.dll</interfaceassembly>
+	<serverassembly>Celeriq.API.Q11111111111111111111111111111111.Services.dll</serverassembly>
+	<fields>
+		<field isprimarykey="true" fieldtype="Field" datatype="Int" name="JobID"/>
+		<field fieldtype="Dimension" datatype="String" name="JobType" dimensiontype="Normal"/>
+		<field fieldtype="Dimension" datatype="String" name="Company" dimensiontype="Normal"/>
+		<field fieldtype="Field" datatype="Int" name="EmployerID"/>
+		<field fieldtype="Field" datatype="GeoCode" name="Location"/>
+		<field fieldtype="Dimension" datatype="String" name="State" dimensiontype="Normal"/>
+		<field fieldtype="Field" datatype="String" name="Zip" size="10"/>
+		<field fieldtype="Field" datatype="DateTime" name="PostedDate"/>
+		<field fieldtype="Field" datatype="String" name="Description" size="6000" istextsearchable="true"/>
+		<field fieldtype="Field" datatype="String" name="Title" size="200" istextsearchable="true"/>
+		<field fieldtype="Field" datatype="DateTime" name="ExpirationDate"/>
+		<field fieldtype="Field" datatype="String" name="ImagePath" size="200"/>
+		<field fieldtype="Field" datatype="Int" name="Priority"/>
+		<field fieldtype="Dimension" datatype="String" name="Specialty" dimensiontype="Normal" parentdimension="Profession"/>
+		<field fieldtype="Dimension" datatype="String" name="EmployerType" dimensiontype="Normal"/>
+		<field fieldtype="Field" datatype="Bool" name="IsAgency"/>
+		<field fieldtype="Dimension" datatype="String" name="City" dimensiontype="Normal" parentdimension="State"/>
+		<field fieldtype="Dimension" datatype="String" name="Profession" dimensiontype="Normal"/>
+		<field fieldtype="Field" datatype="Int" name="SpecialtyId"/>
+		<field fieldtype="Field" datatype="Bool" name="PremiumIsActive"/>
+		<field fieldtype="Field" datatype="Bool" name="PremiumJobIsGeo"/>
+		<field fieldtype="Field" datatype="DateTime" name="PremiumStartDate"/>
+		<field fieldtype="Field" datatype="DateTime" name="PremiumExpirationDate"/>
+		<field fieldtype="Field" datatype="String" name="PremiumState"/>
+		<field fieldtype="Field" datatype="String" name="PremiumSpecialty"/>
+		<field fieldtype="Field" datatype="Bool" name="PremiumJobIsHomepage"/>
+		<field fieldtype="Field" datatype="Int" name="PremiumJobId"/>
+	</fields>
+</repository>

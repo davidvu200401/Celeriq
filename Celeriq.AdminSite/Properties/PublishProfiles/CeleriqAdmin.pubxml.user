@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>c:\publish\celeriqadmin</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="AuthUser/Default.aspx">
+      <publishTime>01/22/2014 15:21:20</publishTime>
+    </File>
+    <File Include="AuthUser/ServerSettings.aspx">
+      <publishTime>01/22/2014 15:21:39</publishTime>
+    </File>
+    <File Include="bin/AntiXSSLibrary.dll">
+      <publishTime>08/23/2013 14:24:36</publishTime>
+    </File>
+    <File Include="bin/Celeriq.AdminSite.dll">
+      <publishTime>01/22/2014 15:39:45</publishTime>
+    </File>
+    <File Include="bin/Celeriq.AdminSite.pdb">
+      <publishTime>01/22/2014 15:39:45</publishTime>
+    </File>
+    <File Include="bin/Celeriq.Common.dll">
+      <publishTime>01/17/2014 14:44:43</publishTime>
+    </File>
+    <File Include="bin/Celeriq.Common.pdb">
+      <publishTime>01/17/2014 14:44:43</publishTime>
+    </File>
+    <File Include="bin/Celeriq.Utilities.dll">
+      <publishTime>01/17/2014 13:24:04</publishTime>
+    </File>
+    <File Include="bin/Celeriq.Utilities.pdb">
+      <publishTime>01/17/2014 13:24:04</publishTime>
+    </File>
+    <File Include="bin/Ionic.Zip.dll">
+      <publishTime>11/21/2013 09:21:15</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>05/06/2013 09:28:45</publishTime>
+    </File>
+    <File Include="css/bootstrap-multiselect.css">
+      <publishTime>12/20/2013 13:41:03</publishTime>
+    </File>
+    <File Include="css/bootstrap-theme.min.css">
+      <publishTime>12/20/2013 13:41:03</publishTime>
+    </File>
+    <File Include="css/bootstrap.min.css">
+      <publishTime>12/20/2013 13:41:03</publishTime>
+    </File>
+    <File Include="css/datepicker.css">
+      <publishTime>12/20/2013 13:41:03</publishTime>
+    </File>
+    <File Include="css/styles.css">
+      <publishTime>01/22/2014 15:27:18</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>12/20/2013 13:41:03</publishTime>
+    </File>
+    <File Include="MainService.asmx">
+      <publishTime>12/20/2013 13:41:03</publishTime>
+    </File>
+    <File Include="Master.Master">
+      <publishTime>01/22/2014 14:49:01</publishTime>
+    </File>
+    <File Include="script/bootstrap-datepicker.js">
+      <publishTime>12/20/2013 13:41:02</publishTime>
+    </File>
+    <File Include="script/bootstrap.min.js">
+      <publishTime>12/20/2013 13:41:02</publishTime>
+    </File>
+    <File Include="script/jquery-1.8.3.min.js">
+      <publishTime>12/20/2013 13:41:02</publishTime>
+    </File>
+    <File Include="script/master.js">
+      <publishTime>12/20/2013 13:41:02</publishTime>
+    </File>
+    <File Include="UserControls/FooterControl.ascx">
+      <publishTime>01/22/2014 15:22:46</publishTime>
+    </File>
+    <File Include="UserControls/HeaderControl.ascx">
+      <publishTime>01/22/2014 15:20:01</publishTime>
+    </File>
+    <File Include="UserControls/LoginControl.ascx">
+      <publishTime>01/22/2014 14:39:22</publishTime>
+    </File>
+    <File Include="UserControls/PagingControl.ascx">
+      <publishTime>12/20/2013 14:15:39</publishTime>
+    </File>
+    <File Include="UserControls/RepositoryGridItemControl.ascx">
+      <publishTime>01/22/2014 15:27:05</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/22/2014 15:39:45</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

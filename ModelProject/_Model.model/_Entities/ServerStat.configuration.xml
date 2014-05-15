@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<configuration type="entity" name="ServerStat" id="e7592c74-0b65-43ba-a5e6-7f18c80d8cb8" allowaudittracking="0" allowcreateaudit="0" allowmodifyaudit="0" allowtimestamp="0" codefacade="" immutable="0" enforceprimarykey="1" isassociative="0" typedentity="None" schema="" generatesdoublederived="0" isgenerated="1" isTenant="0">
+		<summary><![CDATA[]]></summary>
+		<fieldset>
+				<field id="7c555ac4-97cb-4964-8bf0-f6b05c45d473" name="AddedDate" nullable="0" datatype="DateTime" identity="None" codefacade="" dataformatstring="" default="getdate" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="8" scale="0" sortorder="11" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="3052e026-9dd6-4cdd-a698-a615306a240a" name="MemoryUsageAvailable" nullable="0" datatype="BigInt" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="8" scale="0" sortorder="3" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="aece0d22-5e16-4776-82cd-cd1884a650ac" name="MemoryUsageProcess" nullable="0" datatype="BigInt" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="8" scale="0" sortorder="12" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="6df8fa1c-a6b2-48c6-abd8-249090ff0fd9" name="MemoryUsageTotal" nullable="0" datatype="BigInt" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="8" scale="0" sortorder="2" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="57ad1db8-8287-4f17-ab8e-a975df2d08e2" name="ProcessorUsage" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="10" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="3a8fc404-5030-4dd1-9087-f95a24179e7e" name="RepositoryCreateDelta" nullable="0" datatype="BigInt" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="8" scale="0" sortorder="8" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="1d49476a-5a08-4abb-8208-9a69f34bb99b" name="RepositoryDeleteDelta" nullable="0" datatype="BigInt" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="8" scale="0" sortorder="9" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="9926d7a1-56a1-43b4-8140-11bdccb947a6" name="RepositoryInMem" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="4" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="da71e64f-32de-49fc-b424-a9db5f0b265c" name="RepositoryLoadDelta" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="5" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="86418161-eb05-45e0-b207-1946bc709226" name="RepositoryTotal" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="7" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="945ba07a-c86a-4d27-9f55-9913ecf42b46" name="RepositoryUnloadDelta" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="6" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="4c847fc6-593f-4d63-8af6-a691b7a07fc4" name="ServerStatId" nullable="0" datatype="Int" identity="Database" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="1" Iscalculated="0" isunique="1" length="4" scale="0" sortorder="1" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+		</fieldset>
+</configuration>

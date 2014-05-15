@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<configuration type="entity" name="RepositoryData" id="986b5aa7-d627-4613-ac24-fdeaf41a65cb" allowaudittracking="0" allowcreateaudit="1" allowmodifyaudit="1" allowtimestamp="1" codefacade="" immutable="0" enforceprimarykey="1" isassociative="0" typedentity="None" schema="" generatesdoublederived="0" isgenerated="1" isTenant="0">
+		<summary><![CDATA[]]></summary>
+		<fieldset>
+				<field id="377d651c-e11a-402b-9298-ccfdca7bf6c0" name="Data" nullable="0" datatype="VarBinary" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="0" scale="0" sortorder="4" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="642653b7-b367-4a68-a1e0-40b35b8e260f" name="Keyword" nullable="1" datatype="VarChar" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="0" scale="0" sortorder="5" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="994a8a8b-fabb-46ac-bdac-41e595802a9c" name="RepositoryDataId" nullable="0" datatype="BigInt" identity="Database" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="1" Iscalculated="0" isunique="1" length="8" scale="0" sortorder="1" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="df5db65d-6145-4396-b545-a53c1026e9cd" name="RepositoryId" nullable="0" datatype="Int" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="0" Iscalculated="0" isunique="0" length="4" scale="0" sortorder="2" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+		</fieldset>
+</configuration>

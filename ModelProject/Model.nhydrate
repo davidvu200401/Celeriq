@@ -1,0 +1,3 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nHydrateModel dslVersion="5.2.0.125" Id="b3fc7837-d0f4-4f9a-a978-b02ac30b9594" companyName="Celeriq" projectName="DataCore" version="3.0.0.0" modelToDisk="true" modelVersion="5.1.2.115" diagramVisibility="Function, StoredProcedure, View" supportedPlatforms="SQLServer">
+</nHydrateModel>

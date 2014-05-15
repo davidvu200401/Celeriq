@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBF37B44-C056-42F3-BFBC-D6EA8BFBB900}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoadTest</RootNamespace>
+    <AssemblyName>LoadTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseTask.cs" />
+    <Compile Include="DataSetup.cs" />
+    <Compile Include="ITestThread.cs" />
+    <Compile Include="Junk.cs" />
+    <Compile Include="SingleChangeThread.cs" />
+    <Compile Include="QueryThread.cs" />
+    <Compile Include="DeleteThread.cs" />
+    <Compile Include="CreateThread.cs" />
+    <Compile Include="Generated.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Celeriq.Common\Celeriq.Common.csproj">
+      <Project>{0fd1eab9-5fc3-480a-bd54-6c88c8f5de41}</Project>
+      <Name>Celeriq.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Celeriq.Server.Core\Celeriq.Server.Core.csproj">
+      <Project>{d21202b7-97d4-46d6-a5fa-3edb4f6addb2}</Project>
+      <Name>Celeriq.Server.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Celeriq.Server.Interfaces\Celeriq.Server.Interfaces.csproj">
+      <Project>{22c2f327-06fc-4c0e-8a72-3224d55459aa}</Project>
+      <Name>Celeriq.Server.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Celeriq.Utilities\Celeriq.Utilities.csproj">
+      <Project>{66195294-061e-41d6-9d62-bb4a6382cc38}</Project>
+      <Name>Celeriq.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LoadTest.celeriq" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

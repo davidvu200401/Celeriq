@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Celeriq.DataCore.EFDAL.Entity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+	<EntityContainer Name="DataCoreEntities">
+		<EntitySet Name="ConfigurationSetting" EntityType="Celeriq.DataCore.EFDAL.Entity.ConfigurationSetting" />
+		<EntitySet Name="DimensionData" EntityType="Celeriq.DataCore.EFDAL.Entity.DimensionData" />
+		<EntitySet Name="DimensionStore" EntityType="Celeriq.DataCore.EFDAL.Entity.DimensionStore" />
+		<EntitySet Name="RepositoryActionType" EntityType="Celeriq.DataCore.EFDAL.Entity.RepositoryActionType" />
+		<EntitySet Name="RepositoryData" EntityType="Celeriq.DataCore.EFDAL.Entity.RepositoryData" />
+		<EntitySet Name="RepositoryDefinition" EntityType="Celeriq.DataCore.EFDAL.Entity.RepositoryDefinition" />
+		<EntitySet Name="RepositoryLog" EntityType="Celeriq.DataCore.EFDAL.Entity.RepositoryLog" />
+		<EntitySet Name="RepositoryStat" EntityType="Celeriq.DataCore.EFDAL.Entity.RepositoryStat" />
+		<EntitySet Name="ServerStat" EntityType="Celeriq.DataCore.EFDAL.Entity.ServerStat" />
+		<EntitySet Name="UserAccount" EntityType="Celeriq.DataCore.EFDAL.Entity.UserAccount" />
+		<AssociationSet Name="FK__DimensionData_DimensionStore" Association="Celeriq.DataCore.EFDAL.Entity.FK__DimensionData_DimensionStore">
+			<End Role="DimensionStore" EntitySet="DimensionStore" />
+			<End Role="DimensionDataList" EntitySet="DimensionData" />
+		</AssociationSet>
+		<AssociationSet Name="FK__RepositoryStat_RepositoryActionType" Association="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryStat_RepositoryActionType">
+			<End Role="RepositoryActionType" EntitySet="RepositoryActionType" />
+			<End Role="RepositoryStatList" EntitySet="RepositoryStat" />
+		</AssociationSet>
+		<AssociationSet Name="FK__RepositoryData_RepositoryDefinition" Association="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryData_RepositoryDefinition">
+			<End Role="RepositoryDefinition" EntitySet="RepositoryDefinition" />
+			<End Role="RepositoryDataList" EntitySet="RepositoryData" />
+		</AssociationSet>
+		<AssociationSet Name="FK__DimensionStore_RepositoryDefinition" Association="Celeriq.DataCore.EFDAL.Entity.FK__DimensionStore_RepositoryDefinition">
+			<End Role="RepositoryDefinition" EntitySet="RepositoryDefinition" />
+			<End Role="DimensionStoreList" EntitySet="DimensionStore" />
+		</AssociationSet>
+		<AssociationSet Name="FK__RepositoryLog_RepositoryDefinition" Association="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryLog_RepositoryDefinition">
+			<End Role="RepositoryDefinition" EntitySet="RepositoryDefinition" />
+			<End Role="RepositoryLogList" EntitySet="RepositoryLog" />
+		</AssociationSet>
+		<AssociationSet Name="FK__RepositoryStat_RepositoryDefinition" Association="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryStat_RepositoryDefinition">
+			<End Role="RepositoryDefinition" EntitySet="RepositoryDefinition" />
+			<End Role="RepositoryStatList" EntitySet="RepositoryStat" />
+		</AssociationSet>
+	</EntityContainer>
+	<EntityType Name="ConfigurationSetting">
+		<Key>
+			<PropertyRef Name="ID" />
+		</Key>
+		<Property Name="ID" Type="Int32" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+		<Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+		<Property Name="Value" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+		<Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="ModifiedDate" Type="DateTime" />
+		<Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="CreatedDate" Type="DateTime" />
+		<Property Name="Timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+	</EntityType>
+	<EntityType Name="DimensionData">
+		<Key>
+			<PropertyRef Name="DimensionDataId" />
+		</Key>
+		<Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+		<Property Name="DimensionDataId" Type="Int64" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+		<Property Name="DimensionsionStoreId" Type="Int64" Nullable="false" />
+		<Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="ModifiedDate" Type="DateTime" />
+		<Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="CreatedDate" Type="DateTime" />
+		<Property Name="Timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+		<NavigationProperty Name="DimensionStore" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__DimensionData_DimensionStore" FromRole="DimensionDataList" ToRole="DimensionStore" />
+	</EntityType>
+	<EntityType Name="DimensionStore">
+		<Key>
+			<PropertyRef Name="DimensionStoreId" />
+		</Key>
+		<Property Name="DIdx" Type="Int64" Nullable="false" />
+		<Property Name="DimensionStoreId" Type="Int64" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+		<Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="RepositoryId" Type="Int32" Nullable="false" />
+		<Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="ModifiedDate" Type="DateTime" />
+		<Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="CreatedDate" Type="DateTime" />
+		<Property Name="Timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+		<NavigationProperty Name="DimensionDataList" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__DimensionData_DimensionStore" FromRole="DimensionStore" ToRole="DimensionDataList" />
+		<NavigationProperty Name="RepositoryDefinition" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__DimensionStore_RepositoryDefinition" FromRole="DimensionStoreList" ToRole="RepositoryDefinition" />
+	</EntityType>
+	<EntityType Name="RepositoryActionType">
+		<Key>
+			<PropertyRef Name="RepositoryActionTypeId" />
+		</Key>
+		<Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="RepositoryActionTypeId" Type="Int32" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+		<NavigationProperty Name="RepositoryStatList" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryStat_RepositoryActionType" FromRole="RepositoryActionType" ToRole="RepositoryStatList" />
+	</EntityType>
+	<EntityType Name="RepositoryData">
+		<Key>
+			<PropertyRef Name="RepositoryDataId" />
+		</Key>
+		<Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+		<Property Name="Keyword" Type="String" Nullable="true" MaxLength="Max" Unicode="false" FixedLength="false" />
+		<Property Name="RepositoryDataId" Type="Int64" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+		<Property Name="RepositoryId" Type="Int32" Nullable="false" />
+		<Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="ModifiedDate" Type="DateTime" />
+		<Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="CreatedDate" Type="DateTime" />
+		<Property Name="Timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+		<NavigationProperty Name="RepositoryDefinition" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryData_RepositoryDefinition" FromRole="RepositoryDataList" ToRole="RepositoryDefinition" />
+	</EntityType>
+	<EntityType Name="RepositoryDefinition">
+		<Key>
+			<PropertyRef Name="RepositoryId" />
+		</Key>
+		<Property Name="DefinitionData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+		<Property Name="ItemCount" Type="Int32" Nullable="false" />
+		<Property Name="MemorySize" Type="Int64" Nullable="false" />
+		<Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="RepositoryId" Type="Int32" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+		<Property Name="UniqueKey" Type="Guid" Nullable="false" />
+		<Property Name="VersionHash" Type="Int64" Nullable="false" />
+		<Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="ModifiedDate" Type="DateTime" />
+		<Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="CreatedDate" Type="DateTime" />
+		<Property Name="Timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+		<NavigationProperty Name="RepositoryDataList" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryData_RepositoryDefinition" FromRole="RepositoryDefinition" ToRole="RepositoryDataList" />
+		<NavigationProperty Name="DimensionStoreList" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__DimensionStore_RepositoryDefinition" FromRole="RepositoryDefinition" ToRole="DimensionStoreList" />
+		<NavigationProperty Name="RepositoryLogList" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryLog_RepositoryDefinition" FromRole="RepositoryDefinition" ToRole="RepositoryLogList" />
+		<NavigationProperty Name="RepositoryStatList" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryStat_RepositoryDefinition" FromRole="RepositoryDefinition" ToRole="RepositoryStatList" />
+	</EntityType>
+	<EntityType Name="RepositoryLog">
+		<Key>
+			<PropertyRef Name="RepositoryLogId" />
+		</Key>
+		<Property Name="Count" Type="Int32" Nullable="false" />
+		<Property Name="ElapsedTime" Type="Int32" Nullable="false" />
+		<Property Name="IPAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="Query" Type="String" Nullable="true" MaxLength="Max" Unicode="false" FixedLength="false" />
+		<Property Name="QueryId" Type="Guid" Nullable="false" />
+		<Property Name="RepositoryId" Type="Int32" Nullable="false" />
+		<Property Name="RepositoryLogId" Type="Int32" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+		<Property Name="UsedCache" Type="Boolean" Nullable="false" />
+		<Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="CreatedDate" Type="DateTime" />
+		<NavigationProperty Name="RepositoryDefinition" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryLog_RepositoryDefinition" FromRole="RepositoryLogList" ToRole="RepositoryDefinition" />
+	</EntityType>
+	<EntityType Name="RepositoryStat">
+		<Key>
+			<PropertyRef Name="RepositoryStatId" />
+		</Key>
+		<Property Name="Count" Type="Int32" Nullable="false" />
+		<Property Name="Elapsed" Type="Int32" Nullable="false" />
+		<Property Name="ItemCount" Type="Int32" Nullable="false" />
+		<Property Name="RepositoryActionTypeId" Type="Int32" Nullable="false" />
+		<Property Name="RepositoryId" Type="Int32" Nullable="false" />
+		<Property Name="RepositoryStatId" Type="Int32" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+		<Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="CreatedDate" Type="DateTime" />
+		<NavigationProperty Name="RepositoryActionType" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryStat_RepositoryActionType" FromRole="RepositoryStatList" ToRole="RepositoryActionType" />
+		<NavigationProperty Name="RepositoryDefinition" Relationship="Celeriq.DataCore.EFDAL.Entity.FK__RepositoryStat_RepositoryDefinition" FromRole="RepositoryStatList" ToRole="RepositoryDefinition" />
+	</EntityType>
+	<EntityType Name="ServerStat">
+		<Key>
+			<PropertyRef Name="ServerStatId" />
+		</Key>
+		<Property Name="AddedDate" Type="DateTime" Nullable="false" />
+		<Property Name="MemoryUsageAvailable" Type="Int64" Nullable="false" />
+		<Property Name="MemoryUsageProcess" Type="Int64" Nullable="false" />
+		<Property Name="MemoryUsageTotal" Type="Int64" Nullable="false" />
+		<Property Name="ProcessorUsage" Type="Int32" Nullable="false" />
+		<Property Name="RepositoryCreateDelta" Type="Int64" Nullable="false" />
+		<Property Name="RepositoryDeleteDelta" Type="Int64" Nullable="false" />
+		<Property Name="RepositoryInMem" Type="Int32" Nullable="false" />
+		<Property Name="RepositoryLoadDelta" Type="Int32" Nullable="false" />
+		<Property Name="RepositoryTotal" Type="Int32" Nullable="false" />
+		<Property Name="RepositoryUnloadDelta" Type="Int32" Nullable="false" />
+		<Property Name="ServerStatId" Type="Int32" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+	</EntityType>
+	<EntityType Name="UserAccount">
+		<Key>
+			<PropertyRef Name="UserId" />
+		</Key>
+		<Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="UniqueKey" Type="Guid" Nullable="false" />
+		<Property Name="UserId" Type="Int32" Nullable="false" DefaultValue="-1" annotation:StoreGeneratedPattern="Identity" />
+		<Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="ModifiedDate" Type="DateTime" />
+		<Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+		<Property Name="CreatedDate" Type="DateTime" />
+		<Property Name="Timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+	</EntityType>
+	<Association Name="FK__DimensionData_DimensionStore">
+		<End Role="DimensionStore" Type="Celeriq.DataCore.EFDAL.Entity.DimensionStore" Multiplicity="1" />
+		<End Role="DimensionDataList" Type="Celeriq.DataCore.EFDAL.Entity.DimensionData" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="DimensionStore">
+			<PropertyRef Name="DimensionStoreId" />
+			</Principal>
+			<Dependent Role="DimensionDataList">
+			<PropertyRef Name="DimensionsionStoreId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__RepositoryStat_RepositoryActionType">
+		<End Role="RepositoryActionType" Type="Celeriq.DataCore.EFDAL.Entity.RepositoryActionType" Multiplicity="1" />
+		<End Role="RepositoryStatList" Type="Celeriq.DataCore.EFDAL.Entity.RepositoryStat" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryActionType">
+			<PropertyRef Name="RepositoryActionTypeId" />
+			</Principal>
+			<Dependent Role="RepositoryStatList">
+			<PropertyRef Name="RepositoryActionTypeId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__RepositoryData_RepositoryDefinition">
+		<End Role="RepositoryDefinition" Type="Celeriq.DataCore.EFDAL.Entity.RepositoryDefinition" Multiplicity="1" />
+		<End Role="RepositoryDataList" Type="Celeriq.DataCore.EFDAL.Entity.RepositoryData" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryDefinition">
+			<PropertyRef Name="RepositoryId" />
+			</Principal>
+			<Dependent Role="RepositoryDataList">
+			<PropertyRef Name="RepositoryId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__DimensionStore_RepositoryDefinition">
+		<End Role="RepositoryDefinition" Type="Celeriq.DataCore.EFDAL.Entity.RepositoryDefinition" Multiplicity="1" />
+		<End Role="DimensionStoreList" Type="Celeriq.DataCore.EFDAL.Entity.DimensionStore" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryDefinition">
+			<PropertyRef Name="RepositoryId" />
+			</Principal>
+			<Dependent Role="DimensionStoreList">
+			<PropertyRef Name="RepositoryId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__RepositoryLog_RepositoryDefinition">
+		<End Role="RepositoryDefinition" Type="Celeriq.DataCore.EFDAL.Entity.RepositoryDefinition" Multiplicity="1" />
+		<End Role="RepositoryLogList" Type="Celeriq.DataCore.EFDAL.Entity.RepositoryLog" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryDefinition">
+			<PropertyRef Name="RepositoryId" />
+			</Principal>
+			<Dependent Role="RepositoryLogList">
+			<PropertyRef Name="RepositoryId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__RepositoryStat_RepositoryDefinition">
+		<End Role="RepositoryDefinition" Type="Celeriq.DataCore.EFDAL.Entity.RepositoryDefinition" Multiplicity="1" />
+		<End Role="RepositoryStatList" Type="Celeriq.DataCore.EFDAL.Entity.RepositoryStat" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryDefinition">
+			<PropertyRef Name="RepositoryId" />
+			</Principal>
+			<Dependent Role="RepositoryStatList">
+			<PropertyRef Name="RepositoryId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+</Schema>

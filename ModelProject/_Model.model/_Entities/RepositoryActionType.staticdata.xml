@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<configuration type="entity.staticdata" id="884c0895-93f6-4250-a174-b40e55c0839b">
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="1" orderkey="1" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="Query" orderkey="1" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="2" orderkey="2" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="LoadData" orderkey="2" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="3" orderkey="3" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="SaveData" orderkey="3" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="4" orderkey="4" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="UnloadData" orderkey="4" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="5" orderkey="5" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="Reset" orderkey="5" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="6" orderkey="6" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="ExportSchema" orderkey="6" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="7" orderkey="7" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="Backup" orderkey="7" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="8" orderkey="8" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="Restore" orderkey="8" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="9" orderkey="9" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="Compress" orderkey="9" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="10" orderkey="10" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="Shutdown" orderkey="10" />
+		<data columnkey="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" value="11" orderkey="11" />
+		<data columnkey="be73783c-bf82-4e82-b71f-fde56db88b0c" value="DeleteData" orderkey="11" />
+</configuration>

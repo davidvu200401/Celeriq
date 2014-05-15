@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<configuration type="entity" name="ConfigurationSetting" id="84639471-0e1e-43db-bcb1-f17116d277df" allowaudittracking="0" allowcreateaudit="1" allowmodifyaudit="1" allowtimestamp="1" codefacade="" immutable="0" enforceprimarykey="1" isassociative="0" typedentity="None" schema="" generatesdoublederived="0" isgenerated="1" isTenant="0">
+		<summary><![CDATA[]]></summary>
+		<fieldset>
+				<field id="3fa3a4dd-f8d0-41a7-bef3-608a0a16982e" name="ID" nullable="0" datatype="Int" identity="Database" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="1" Iscalculated="0" isunique="1" length="4" scale="0" sortorder="1" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="f9831815-9eda-44e7-aaf9-61f33dfb164d" name="Name" nullable="0" datatype="VarChar" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="100" scale="0" sortorder="2" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="6428c946-4e7b-4e0d-a445-ce8c2d45ea79" name="Value" nullable="0" datatype="VarChar" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="0" scale="0" sortorder="3" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+		</fieldset>
+</configuration>

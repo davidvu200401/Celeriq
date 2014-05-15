@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<configuration type="entity.relations" id="884c0895-93f6-4250-a174-b40e55c0839b">
+		<relation id="4049439c-e0df-48ee-89f6-76a37fa31978" childid="3ff6b47a-eb8b-4f2f-af0f-24d0a0f985f4" isenforced="1" isinherited="0" rolename="">
+				<summary><![CDATA[]]></summary>
+				<relationfieldset>
+						<field id="9ce46340-4334-4f4a-a1a2-de2ffb7baa80" sourcefieldid="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" targetfieldid="5924b6db-59f4-41a2-bc4b-46842fe7eac8" />
+				</relationfieldset>
+		</relation>
+</configuration>

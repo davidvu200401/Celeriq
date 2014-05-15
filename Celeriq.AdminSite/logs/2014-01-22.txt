@@ -1,0 +1,7 @@
+Error | 2014-01-22 14:12:21.8687  | System.ServiceModel.CommunicationObjectFaultedException: The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.
+   at System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelFactory.OnClose(TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelFactory.TypedServiceChannelFactory`1.OnClose(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   at Celeriq.AdminSite.MainService.GetCeleriqHistory(Int32 hours) in c:\Projects\Celeriq\Celeriq.AdminSite\MainService.asmx.cs:line 132 | 

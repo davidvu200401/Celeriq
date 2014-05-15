@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<configuration type="entity.staticdata" id="53a4130a-79dc-4d7e-9820-b40cbeb5d167">
+		<data columnkey="396afe9f-6843-4d37-9c87-70f05cb6444d" value="1" orderkey="1" />
+		<data columnkey="4601bbca-d748-4834-be2e-10dbd843d9e2" value="00000000-0000-0000-0000-000000000000" orderkey="1" />
+		<data columnkey="718477f0-d535-4f01-8b0c-306b4d3f66c6" value="root" orderkey="1" />
+		<data columnkey="0cedb857-11f2-4711-8d65-68edd681158b" value="password" orderkey="1" />
+</configuration>

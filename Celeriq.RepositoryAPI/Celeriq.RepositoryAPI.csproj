@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F360C2D0-EE0E-4D81-8000-149DEBEFB6F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Celeriq.RepositoryAPI</RootNamespace>
+    <AssemblyName>Celeriq.RepositoryAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\ThirdParty\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\ThirdParty\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="nHydrate.EFCore">
+      <HintPath>..\ThirdParty\nHydrate.EFCore.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Docs\AssemblyInfoGlobal.cs">
+      <Link>Properties\AssemblyInfoGlobal.cs</Link>
+    </Compile>
+    <Compile Include="CacheControl.cs" />
+    <Compile Include="CQTimer.cs" />
+    <Compile Include="DataItemExtension.cs" />
+    <Compile Include="DataMemeber.cs" />
+    <Compile Include="DataProviderBase.cs" />
+    <Compile Include="DimensionCacheFile.cs" />
+    <Compile Include="DimensionCacheDatabase.cs" />
+    <Compile Include="DimensionCacheBase.cs" />
+    <Compile Include="IDimensionCache.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryDimensionTheader.cs" />
+    <Compile Include="QueryLogger.cs" />
+    <Compile Include="RemotingObjectCache.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="IDataProvider.cs" />
+    <Compile Include="FileDataProvider.cs" />
+    <Compile Include="SqlDataProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Celeriq.Common\Celeriq.Common.csproj">
+      <Project>{0fd1eab9-5fc3-480a-bd54-6c88c8f5de41}</Project>
+      <Name>Celeriq.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Celeriq.DataCore.EFDAL.Interfaces\Celeriq.DataCore.EFDAL.Interfaces.csproj">
+      <Project>{f41c1a91-5a71-4bf8-add0-a4aba23c7e28}</Project>
+      <Name>Celeriq.DataCore.EFDAL.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Celeriq.DataCore.EFDAL\Celeriq.DataCore.EFDAL.csproj">
+      <Project>{3323481f-8c16-4913-a200-a3a992442974}</Project>
+      <Name>Celeriq.DataCore.EFDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Celeriq.Server.Interfaces\Celeriq.Server.Interfaces.csproj">
+      <Project>{22c2f327-06fc-4c0e-8a72-3224d55459aa}</Project>
+      <Name>Celeriq.Server.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Celeriq.Utilities\Celeriq.Utilities.csproj">
+      <Project>{66195294-061e-41d6-9d62-bb4a6382cc38}</Project>
+      <Name>Celeriq.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>attrib -r "$(SolutionDir)Bin\*.*"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetName).*" "$(SolutionDir)Bin\"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

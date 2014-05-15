@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+	<EntityContainerMapping StorageEntityContainer="DataCoreModelStoreContainer" CdmEntityContainer="DataCoreEntities">
+		<EntitySetMapping Name="ConfigurationSetting">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.ConfigurationSetting">
+				<MappingFragment StoreEntitySet="ConfigurationSetting">
+					<ScalarProperty Name="ID" ColumnName="ID" />
+					<ScalarProperty Name="Name" ColumnName="Name" />
+					<ScalarProperty Name="Value" ColumnName="Value" />
+					<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+					<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+					<ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+					<ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+					<ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_ConfigurationSetting_Insert">
+						<ScalarProperty Name="Name" ParameterName="Name" />
+						<ScalarProperty Name="Value" ParameterName="Value" />
+						<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+						<ScalarProperty Name="CreatedDate" ParameterName="CreatedDate" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" />
+						<ResultBinding Name="ID" ColumnName="ID" />
+						<ResultBinding Name="Name" ColumnName="Name" />
+						<ResultBinding Name="Value" ColumnName="Value" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_ConfigurationSetting_Update">
+						<ScalarProperty Name="Timestamp" ParameterName="Original_Timestamp" Version="Original" />
+						<ScalarProperty Name="ID" ParameterName="Original_ID" Version="Original" />
+						<ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+						<ScalarProperty Name="Value" ParameterName="Value" Version="Current" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" Version="Current" />
+						<ScalarProperty Name="ModifiedDate" ParameterName="ModifiedDate" Version="Current" />
+						<ResultBinding Name="Name" ColumnName="Name" />
+						<ResultBinding Name="Value" ColumnName="Value" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_ConfigurationSetting_Delete">
+						<ScalarProperty Name="ID" ParameterName="Original_ID" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+		<EntitySetMapping Name="DimensionData">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.DimensionData">
+				<MappingFragment StoreEntitySet="DimensionData">
+					<ScalarProperty Name="Data" ColumnName="Data" />
+					<ScalarProperty Name="DimensionDataId" ColumnName="DimensionDataId" />
+					<ScalarProperty Name="DimensionsionStoreId" ColumnName="DimensionsionStoreId" />
+					<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+					<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+					<ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+					<ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+					<ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_DimensionData_Insert">
+						<ScalarProperty Name="Data" ParameterName="Data" />
+						<ScalarProperty Name="DimensionsionStoreId" ParameterName="DimensionsionStoreId" />
+						<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+						<ScalarProperty Name="CreatedDate" ParameterName="CreatedDate" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" />
+						<ResultBinding Name="Data" ColumnName="Data" />
+						<ResultBinding Name="DimensionDataId" ColumnName="DimensionDataId" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_DimensionData_Update">
+						<ScalarProperty Name="Timestamp" ParameterName="Original_Timestamp" Version="Original" />
+						<ScalarProperty Name="DimensionDataId" ParameterName="Original_DimensionDataId" Version="Original" />
+						<ScalarProperty Name="DimensionsionStoreId" ParameterName="DimensionsionStoreId" Version="Current" />
+						<ScalarProperty Name="Data" ParameterName="Data" Version="Current" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" Version="Current" />
+						<ScalarProperty Name="ModifiedDate" ParameterName="ModifiedDate" Version="Current" />
+						<ResultBinding Name="Data" ColumnName="Data" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_DimensionData_Delete">
+						<ScalarProperty Name="DimensionDataId" ParameterName="Original_DimensionDataId" />
+						<ScalarProperty Name="DimensionsionStoreId" ParameterName="DimensionStore_DimensionStoreId" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+		<EntitySetMapping Name="DimensionStore">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.DimensionStore">
+				<MappingFragment StoreEntitySet="DimensionStore">
+					<ScalarProperty Name="DIdx" ColumnName="DIdx" />
+					<ScalarProperty Name="DimensionStoreId" ColumnName="DimensionStoreId" />
+					<ScalarProperty Name="Name" ColumnName="Name" />
+					<ScalarProperty Name="RepositoryId" ColumnName="RepositoryId" />
+					<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+					<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+					<ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+					<ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+					<ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_DimensionStore_Insert">
+						<ScalarProperty Name="DIdx" ParameterName="DIdx" />
+						<ScalarProperty Name="Name" ParameterName="Name" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryId" />
+						<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+						<ScalarProperty Name="CreatedDate" ParameterName="CreatedDate" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" />
+						<ResultBinding Name="DIdx" ColumnName="DIdx" />
+						<ResultBinding Name="DimensionStoreId" ColumnName="DimensionStoreId" />
+						<ResultBinding Name="Name" ColumnName="Name" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_DimensionStore_Update">
+						<ScalarProperty Name="Timestamp" ParameterName="Original_Timestamp" Version="Original" />
+						<ScalarProperty Name="DimensionStoreId" ParameterName="Original_DimensionStoreId" Version="Original" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryId" Version="Current" />
+						<ScalarProperty Name="DIdx" ParameterName="DIdx" Version="Current" />
+						<ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" Version="Current" />
+						<ScalarProperty Name="ModifiedDate" ParameterName="ModifiedDate" Version="Current" />
+						<ResultBinding Name="DIdx" ColumnName="DIdx" />
+						<ResultBinding Name="Name" ColumnName="Name" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_DimensionStore_Delete">
+						<ScalarProperty Name="DimensionStoreId" ParameterName="Original_DimensionStoreId" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryDefinition_RepositoryId" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+		<EntitySetMapping Name="RepositoryActionType">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.RepositoryActionType">
+				<MappingFragment StoreEntitySet="RepositoryActionType">
+					<ScalarProperty Name="Name" ColumnName="Name" />
+					<ScalarProperty Name="RepositoryActionTypeId" ColumnName="RepositoryActionTypeId" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryActionType_Insert">
+						<ScalarProperty Name="Name" ParameterName="Name" />
+						<ResultBinding Name="Name" ColumnName="Name" />
+						<ResultBinding Name="RepositoryActionTypeId" ColumnName="RepositoryActionTypeId" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryActionType_Update">
+						<ScalarProperty Name="RepositoryActionTypeId" ParameterName="Original_RepositoryActionTypeId" Version="Original" />
+						<ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+						<ResultBinding Name="Name" ColumnName="Name" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryActionType_Delete">
+						<ScalarProperty Name="RepositoryActionTypeId" ParameterName="Original_RepositoryActionTypeId" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+		<EntitySetMapping Name="RepositoryData">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.RepositoryData">
+				<MappingFragment StoreEntitySet="RepositoryData">
+					<ScalarProperty Name="Data" ColumnName="Data" />
+					<ScalarProperty Name="Keyword" ColumnName="Keyword" />
+					<ScalarProperty Name="RepositoryDataId" ColumnName="RepositoryDataId" />
+					<ScalarProperty Name="RepositoryId" ColumnName="RepositoryId" />
+					<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+					<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+					<ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+					<ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+					<ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryData_Insert">
+						<ScalarProperty Name="Data" ParameterName="Data" />
+						<ScalarProperty Name="Keyword" ParameterName="Keyword" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryId" />
+						<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+						<ScalarProperty Name="CreatedDate" ParameterName="CreatedDate" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" />
+						<ResultBinding Name="Data" ColumnName="Data" />
+						<ResultBinding Name="Keyword" ColumnName="Keyword" />
+						<ResultBinding Name="RepositoryDataId" ColumnName="RepositoryDataId" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryData_Update">
+						<ScalarProperty Name="Timestamp" ParameterName="Original_Timestamp" Version="Original" />
+						<ScalarProperty Name="RepositoryDataId" ParameterName="Original_RepositoryDataId" Version="Original" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryId" Version="Current" />
+						<ScalarProperty Name="Data" ParameterName="Data" Version="Current" />
+						<ScalarProperty Name="Keyword" ParameterName="Keyword" Version="Current" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" Version="Current" />
+						<ScalarProperty Name="ModifiedDate" ParameterName="ModifiedDate" Version="Current" />
+						<ResultBinding Name="Data" ColumnName="Data" />
+						<ResultBinding Name="Keyword" ColumnName="Keyword" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryData_Delete">
+						<ScalarProperty Name="RepositoryDataId" ParameterName="Original_RepositoryDataId" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryDefinition_RepositoryId" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+		<EntitySetMapping Name="RepositoryDefinition">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.RepositoryDefinition">
+				<MappingFragment StoreEntitySet="RepositoryDefinition">
+					<ScalarProperty Name="DefinitionData" ColumnName="DefinitionData" />
+					<ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+					<ScalarProperty Name="MemorySize" ColumnName="MemorySize" />
+					<ScalarProperty Name="Name" ColumnName="Name" />
+					<ScalarProperty Name="RepositoryId" ColumnName="RepositoryId" />
+					<ScalarProperty Name="UniqueKey" ColumnName="UniqueKey" />
+					<ScalarProperty Name="VersionHash" ColumnName="VersionHash" />
+					<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+					<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+					<ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+					<ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+					<ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryDefinition_Insert">
+						<ScalarProperty Name="DefinitionData" ParameterName="DefinitionData" />
+						<ScalarProperty Name="ItemCount" ParameterName="ItemCount" />
+						<ScalarProperty Name="MemorySize" ParameterName="MemorySize" />
+						<ScalarProperty Name="Name" ParameterName="Name" />
+						<ScalarProperty Name="UniqueKey" ParameterName="UniqueKey" />
+						<ScalarProperty Name="VersionHash" ParameterName="VersionHash" />
+						<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+						<ScalarProperty Name="CreatedDate" ParameterName="CreatedDate" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" />
+						<ResultBinding Name="DefinitionData" ColumnName="DefinitionData" />
+						<ResultBinding Name="ItemCount" ColumnName="ItemCount" />
+						<ResultBinding Name="MemorySize" ColumnName="MemorySize" />
+						<ResultBinding Name="Name" ColumnName="Name" />
+						<ResultBinding Name="RepositoryId" ColumnName="RepositoryId" />
+						<ResultBinding Name="UniqueKey" ColumnName="UniqueKey" />
+						<ResultBinding Name="VersionHash" ColumnName="VersionHash" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryDefinition_Update">
+						<ScalarProperty Name="Timestamp" ParameterName="Original_Timestamp" Version="Original" />
+						<ScalarProperty Name="RepositoryId" ParameterName="Original_RepositoryId" Version="Original" />
+						<ScalarProperty Name="DefinitionData" ParameterName="DefinitionData" Version="Current" />
+						<ScalarProperty Name="ItemCount" ParameterName="ItemCount" Version="Current" />
+						<ScalarProperty Name="MemorySize" ParameterName="MemorySize" Version="Current" />
+						<ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+						<ScalarProperty Name="UniqueKey" ParameterName="UniqueKey" Version="Current" />
+						<ScalarProperty Name="VersionHash" ParameterName="VersionHash" Version="Current" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" Version="Current" />
+						<ScalarProperty Name="ModifiedDate" ParameterName="ModifiedDate" Version="Current" />
+						<ResultBinding Name="DefinitionData" ColumnName="DefinitionData" />
+						<ResultBinding Name="ItemCount" ColumnName="ItemCount" />
+						<ResultBinding Name="MemorySize" ColumnName="MemorySize" />
+						<ResultBinding Name="Name" ColumnName="Name" />
+						<ResultBinding Name="UniqueKey" ColumnName="UniqueKey" />
+						<ResultBinding Name="VersionHash" ColumnName="VersionHash" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryDefinition_Delete">
+						<ScalarProperty Name="RepositoryId" ParameterName="Original_RepositoryId" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+		<EntitySetMapping Name="RepositoryLog">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.RepositoryLog">
+				<MappingFragment StoreEntitySet="RepositoryLog">
+					<ScalarProperty Name="Count" ColumnName="Count" />
+					<ScalarProperty Name="ElapsedTime" ColumnName="ElapsedTime" />
+					<ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+					<ScalarProperty Name="Query" ColumnName="Query" />
+					<ScalarProperty Name="QueryId" ColumnName="QueryId" />
+					<ScalarProperty Name="RepositoryId" ColumnName="RepositoryId" />
+					<ScalarProperty Name="RepositoryLogId" ColumnName="RepositoryLogId" />
+					<ScalarProperty Name="UsedCache" ColumnName="UsedCache" />
+					<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+					<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryLog_Insert">
+						<ScalarProperty Name="Count" ParameterName="Count" />
+						<ScalarProperty Name="ElapsedTime" ParameterName="ElapsedTime" />
+						<ScalarProperty Name="IPAddress" ParameterName="IPAddress" />
+						<ScalarProperty Name="Query" ParameterName="Query" />
+						<ScalarProperty Name="QueryId" ParameterName="QueryId" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryId" />
+						<ScalarProperty Name="UsedCache" ParameterName="UsedCache" />
+						<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+						<ScalarProperty Name="CreatedDate" ParameterName="CreatedDate" />
+						<ResultBinding Name="Count" ColumnName="Count" />
+						<ResultBinding Name="ElapsedTime" ColumnName="ElapsedTime" />
+						<ResultBinding Name="IPAddress" ColumnName="IPAddress" />
+						<ResultBinding Name="Query" ColumnName="Query" />
+						<ResultBinding Name="QueryId" ColumnName="QueryId" />
+						<ResultBinding Name="RepositoryLogId" ColumnName="RepositoryLogId" />
+						<ResultBinding Name="UsedCache" ColumnName="UsedCache" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryLog_Update">
+						<ScalarProperty Name="RepositoryLogId" ParameterName="Original_RepositoryLogId" Version="Original" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryId" Version="Current" />
+						<ScalarProperty Name="Count" ParameterName="Count" Version="Current" />
+						<ScalarProperty Name="ElapsedTime" ParameterName="ElapsedTime" Version="Current" />
+						<ScalarProperty Name="IPAddress" ParameterName="IPAddress" Version="Current" />
+						<ScalarProperty Name="Query" ParameterName="Query" Version="Current" />
+						<ScalarProperty Name="QueryId" ParameterName="QueryId" Version="Current" />
+						<ScalarProperty Name="UsedCache" ParameterName="UsedCache" Version="Current" />
+						<ResultBinding Name="Count" ColumnName="Count" />
+						<ResultBinding Name="ElapsedTime" ColumnName="ElapsedTime" />
+						<ResultBinding Name="IPAddress" ColumnName="IPAddress" />
+						<ResultBinding Name="Query" ColumnName="Query" />
+						<ResultBinding Name="QueryId" ColumnName="QueryId" />
+						<ResultBinding Name="UsedCache" ColumnName="UsedCache" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryLog_Delete">
+						<ScalarProperty Name="RepositoryLogId" ParameterName="Original_RepositoryLogId" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryDefinition_RepositoryId" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+		<EntitySetMapping Name="RepositoryStat">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.RepositoryStat">
+				<MappingFragment StoreEntitySet="RepositoryStat">
+					<ScalarProperty Name="Count" ColumnName="Count" />
+					<ScalarProperty Name="Elapsed" ColumnName="Elapsed" />
+					<ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+					<ScalarProperty Name="RepositoryActionTypeId" ColumnName="RepositoryActionTypeId" />
+					<ScalarProperty Name="RepositoryId" ColumnName="RepositoryId" />
+					<ScalarProperty Name="RepositoryStatId" ColumnName="RepositoryStatId" />
+					<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+					<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryStat_Insert">
+						<ScalarProperty Name="Count" ParameterName="Count" />
+						<ScalarProperty Name="Elapsed" ParameterName="Elapsed" />
+						<ScalarProperty Name="ItemCount" ParameterName="ItemCount" />
+						<ScalarProperty Name="RepositoryActionTypeId" ParameterName="RepositoryActionTypeId" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryId" />
+						<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+						<ScalarProperty Name="CreatedDate" ParameterName="CreatedDate" />
+						<ResultBinding Name="Count" ColumnName="Count" />
+						<ResultBinding Name="Elapsed" ColumnName="Elapsed" />
+						<ResultBinding Name="ItemCount" ColumnName="ItemCount" />
+						<ResultBinding Name="RepositoryStatId" ColumnName="RepositoryStatId" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryStat_Update">
+						<ScalarProperty Name="RepositoryStatId" ParameterName="Original_RepositoryStatId" Version="Original" />
+						<ScalarProperty Name="RepositoryActionTypeId" ParameterName="RepositoryActionTypeId" Version="Current" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryId" Version="Current" />
+						<ScalarProperty Name="Count" ParameterName="Count" Version="Current" />
+						<ScalarProperty Name="Elapsed" ParameterName="Elapsed" Version="Current" />
+						<ScalarProperty Name="ItemCount" ParameterName="ItemCount" Version="Current" />
+						<ResultBinding Name="Count" ColumnName="Count" />
+						<ResultBinding Name="Elapsed" ColumnName="Elapsed" />
+						<ResultBinding Name="ItemCount" ColumnName="ItemCount" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_RepositoryStat_Delete">
+						<ScalarProperty Name="RepositoryStatId" ParameterName="Original_RepositoryStatId" />
+						<ScalarProperty Name="RepositoryActionTypeId" ParameterName="RepositoryActionType_RepositoryActionTypeId" />
+						<ScalarProperty Name="RepositoryId" ParameterName="RepositoryDefinition_RepositoryId" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+		<EntitySetMapping Name="ServerStat">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.ServerStat">
+				<MappingFragment StoreEntitySet="ServerStat">
+					<ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+					<ScalarProperty Name="MemoryUsageAvailable" ColumnName="MemoryUsageAvailable" />
+					<ScalarProperty Name="MemoryUsageProcess" ColumnName="MemoryUsageProcess" />
+					<ScalarProperty Name="MemoryUsageTotal" ColumnName="MemoryUsageTotal" />
+					<ScalarProperty Name="ProcessorUsage" ColumnName="ProcessorUsage" />
+					<ScalarProperty Name="RepositoryCreateDelta" ColumnName="RepositoryCreateDelta" />
+					<ScalarProperty Name="RepositoryDeleteDelta" ColumnName="RepositoryDeleteDelta" />
+					<ScalarProperty Name="RepositoryInMem" ColumnName="RepositoryInMem" />
+					<ScalarProperty Name="RepositoryLoadDelta" ColumnName="RepositoryLoadDelta" />
+					<ScalarProperty Name="RepositoryTotal" ColumnName="RepositoryTotal" />
+					<ScalarProperty Name="RepositoryUnloadDelta" ColumnName="RepositoryUnloadDelta" />
+					<ScalarProperty Name="ServerStatId" ColumnName="ServerStatId" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_ServerStat_Insert">
+						<ScalarProperty Name="AddedDate" ParameterName="AddedDate" />
+						<ScalarProperty Name="MemoryUsageAvailable" ParameterName="MemoryUsageAvailable" />
+						<ScalarProperty Name="MemoryUsageProcess" ParameterName="MemoryUsageProcess" />
+						<ScalarProperty Name="MemoryUsageTotal" ParameterName="MemoryUsageTotal" />
+						<ScalarProperty Name="ProcessorUsage" ParameterName="ProcessorUsage" />
+						<ScalarProperty Name="RepositoryCreateDelta" ParameterName="RepositoryCreateDelta" />
+						<ScalarProperty Name="RepositoryDeleteDelta" ParameterName="RepositoryDeleteDelta" />
+						<ScalarProperty Name="RepositoryInMem" ParameterName="RepositoryInMem" />
+						<ScalarProperty Name="RepositoryLoadDelta" ParameterName="RepositoryLoadDelta" />
+						<ScalarProperty Name="RepositoryTotal" ParameterName="RepositoryTotal" />
+						<ScalarProperty Name="RepositoryUnloadDelta" ParameterName="RepositoryUnloadDelta" />
+						<ResultBinding Name="AddedDate" ColumnName="AddedDate" />
+						<ResultBinding Name="MemoryUsageAvailable" ColumnName="MemoryUsageAvailable" />
+						<ResultBinding Name="MemoryUsageProcess" ColumnName="MemoryUsageProcess" />
+						<ResultBinding Name="MemoryUsageTotal" ColumnName="MemoryUsageTotal" />
+						<ResultBinding Name="ProcessorUsage" ColumnName="ProcessorUsage" />
+						<ResultBinding Name="RepositoryCreateDelta" ColumnName="RepositoryCreateDelta" />
+						<ResultBinding Name="RepositoryDeleteDelta" ColumnName="RepositoryDeleteDelta" />
+						<ResultBinding Name="RepositoryInMem" ColumnName="RepositoryInMem" />
+						<ResultBinding Name="RepositoryLoadDelta" ColumnName="RepositoryLoadDelta" />
+						<ResultBinding Name="RepositoryTotal" ColumnName="RepositoryTotal" />
+						<ResultBinding Name="RepositoryUnloadDelta" ColumnName="RepositoryUnloadDelta" />
+						<ResultBinding Name="ServerStatId" ColumnName="ServerStatId" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_ServerStat_Update">
+						<ScalarProperty Name="ServerStatId" ParameterName="Original_ServerStatId" Version="Original" />
+						<ScalarProperty Name="AddedDate" ParameterName="AddedDate" Version="Current" />
+						<ScalarProperty Name="MemoryUsageAvailable" ParameterName="MemoryUsageAvailable" Version="Current" />
+						<ScalarProperty Name="MemoryUsageProcess" ParameterName="MemoryUsageProcess" Version="Current" />
+						<ScalarProperty Name="MemoryUsageTotal" ParameterName="MemoryUsageTotal" Version="Current" />
+						<ScalarProperty Name="ProcessorUsage" ParameterName="ProcessorUsage" Version="Current" />
+						<ScalarProperty Name="RepositoryCreateDelta" ParameterName="RepositoryCreateDelta" Version="Current" />
+						<ScalarProperty Name="RepositoryDeleteDelta" ParameterName="RepositoryDeleteDelta" Version="Current" />
+						<ScalarProperty Name="RepositoryInMem" ParameterName="RepositoryInMem" Version="Current" />
+						<ScalarProperty Name="RepositoryLoadDelta" ParameterName="RepositoryLoadDelta" Version="Current" />
+						<ScalarProperty Name="RepositoryTotal" ParameterName="RepositoryTotal" Version="Current" />
+						<ScalarProperty Name="RepositoryUnloadDelta" ParameterName="RepositoryUnloadDelta" Version="Current" />
+						<ResultBinding Name="AddedDate" ColumnName="AddedDate" />
+						<ResultBinding Name="MemoryUsageAvailable" ColumnName="MemoryUsageAvailable" />
+						<ResultBinding Name="MemoryUsageProcess" ColumnName="MemoryUsageProcess" />
+						<ResultBinding Name="MemoryUsageTotal" ColumnName="MemoryUsageTotal" />
+						<ResultBinding Name="ProcessorUsage" ColumnName="ProcessorUsage" />
+						<ResultBinding Name="RepositoryCreateDelta" ColumnName="RepositoryCreateDelta" />
+						<ResultBinding Name="RepositoryDeleteDelta" ColumnName="RepositoryDeleteDelta" />
+						<ResultBinding Name="RepositoryInMem" ColumnName="RepositoryInMem" />
+						<ResultBinding Name="RepositoryLoadDelta" ColumnName="RepositoryLoadDelta" />
+						<ResultBinding Name="RepositoryTotal" ColumnName="RepositoryTotal" />
+						<ResultBinding Name="RepositoryUnloadDelta" ColumnName="RepositoryUnloadDelta" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_ServerStat_Delete">
+						<ScalarProperty Name="ServerStatId" ParameterName="Original_ServerStatId" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+		<EntitySetMapping Name="UserAccount">
+			<EntityTypeMapping TypeName="Celeriq.DataCore.EFDAL.Entity.UserAccount">
+				<MappingFragment StoreEntitySet="UserAccount">
+					<ScalarProperty Name="Password" ColumnName="Password" />
+					<ScalarProperty Name="UniqueKey" ColumnName="UniqueKey" />
+					<ScalarProperty Name="UserId" ColumnName="UserId" />
+					<ScalarProperty Name="UserName" ColumnName="UserName" />
+					<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+					<ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+					<ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+					<ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+					<ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+				</MappingFragment>
+				<ModificationFunctionMapping>
+					<InsertFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_UserAccount_Insert">
+						<ScalarProperty Name="Password" ParameterName="Password" />
+						<ScalarProperty Name="UniqueKey" ParameterName="UniqueKey" />
+						<ScalarProperty Name="UserName" ParameterName="UserName" />
+						<ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+						<ScalarProperty Name="CreatedDate" ParameterName="CreatedDate" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" />
+						<ResultBinding Name="Password" ColumnName="Password" />
+						<ResultBinding Name="UniqueKey" ColumnName="UniqueKey" />
+						<ResultBinding Name="UserId" ColumnName="UserId" />
+						<ResultBinding Name="UserName" ColumnName="UserName" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</InsertFunction>
+					<UpdateFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_UserAccount_Update">
+						<ScalarProperty Name="Timestamp" ParameterName="Original_Timestamp" Version="Original" />
+						<ScalarProperty Name="UserId" ParameterName="Original_UserId" Version="Original" />
+						<ScalarProperty Name="Password" ParameterName="Password" Version="Current" />
+						<ScalarProperty Name="UniqueKey" ParameterName="UniqueKey" Version="Current" />
+						<ScalarProperty Name="UserName" ParameterName="UserName" Version="Current" />
+						<ScalarProperty Name="ModifiedBy" ParameterName="ModifiedBy" Version="Current" />
+						<ScalarProperty Name="ModifiedDate" ParameterName="ModifiedDate" Version="Current" />
+						<ResultBinding Name="Password" ColumnName="Password" />
+						<ResultBinding Name="UniqueKey" ColumnName="UniqueKey" />
+						<ResultBinding Name="UserName" ColumnName="UserName" />
+						<ResultBinding Name="CreatedBy" ColumnName="CreatedBy" />
+						<ResultBinding Name="CreatedDate" ColumnName="CreatedDate" />
+						<ResultBinding Name="ModifiedBy" ColumnName="ModifiedBy" />
+						<ResultBinding Name="ModifiedDate" ColumnName="ModifiedDate" />
+						<ResultBinding Name="Timestamp" ColumnName="Timestamp" />
+					</UpdateFunction>
+					<DeleteFunction FunctionName="Celeriq.DataCore.EFDAL.Store.gen_UserAccount_Delete">
+						<ScalarProperty Name="UserId" ParameterName="Original_UserId" />
+					</DeleteFunction>
+				</ModificationFunctionMapping>
+			</EntityTypeMapping>
+		</EntitySetMapping>
+	</EntityContainerMapping>
+</Mapping>

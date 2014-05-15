@@ -1,0 +1,3 @@
+namespace Celeriq.DataCore.EFDAL
+{
+}

@@ -1,0 +1,18 @@
+<repository>
+  <name>LoadTest</name>
+  <createddate>2013-05-14 16:40:21</createddate>
+  <id>88a45ec9-c2f8-45d0-9ee2-ee8cce51647d</id>
+  <fields>
+    <field name="ID" datatype="Int" fieldtype="Field" isprimarykey="True" />
+    <field name="Field1" datatype="String" fieldtype="Field" length="100" />
+    <field name="Field2" datatype="String" fieldtype="Field" length="100" />
+    <field name="Field3" datatype="String" fieldtype="Field" length="100" />
+    <field name="Field4" datatype="String" fieldtype="Field" length="100" />
+    <field name="Field5" datatype="String" fieldtype="Field" length="100" />
+    <field name="Dim1" datatype="String" fieldtype="Dimension" length="100" />
+    <field name="Dim2" datatype="String" fieldtype="Dimension" length="100" />
+    <field name="Dim3" datatype="String" fieldtype="Dimension" length="100" />
+    <field name="Dim4" datatype="String" fieldtype="Dimension" length="100" />
+    <field name="Dim5X" datatype="String" fieldtype="Dimension" length="100" />
+  </fields>
+</repository>

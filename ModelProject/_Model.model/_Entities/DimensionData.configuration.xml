@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<configuration type="entity" name="DimensionData" id="7660c8f0-0c1f-4bcc-8728-c4e343c6f5b0" allowaudittracking="0" allowcreateaudit="1" allowmodifyaudit="1" allowtimestamp="1" codefacade="" immutable="0" enforceprimarykey="1" isassociative="0" typedentity="None" schema="" generatesdoublederived="0" isgenerated="1" isTenant="0">
+		<summary><![CDATA[]]></summary>
+		<fieldset>
+				<field id="6660dc16-4187-4bec-8fad-c35f44de2590" name="Data" nullable="0" datatype="VarBinary" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="0" scale="0" sortorder="4" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="dfcdf721-88da-4e2d-89db-38630b4fd67b" name="DimensionDataId" nullable="0" datatype="BigInt" identity="Database" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="1" Iscalculated="0" isunique="1" length="8" scale="0" sortorder="1" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="863aa1b4-fbc1-4c57-aa7c-63f95fcbe20e" name="DimensionsionStoreId" nullable="0" datatype="BigInt" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="0" Iscalculated="0" isunique="0" length="8" scale="0" sortorder="5" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+		</fieldset>
+</configuration>

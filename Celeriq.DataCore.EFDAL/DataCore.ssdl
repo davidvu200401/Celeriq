@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Celeriq.DataCore.EFDAL.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+	<EntityContainer Name="DataCoreModelStoreContainer">
+		<EntitySet Name="ConfigurationSetting" EntityType="Celeriq.DataCore.EFDAL.Store.ConfigurationSetting" store:Type="Tables" Schema="dbo" />
+		<EntitySet Name="DimensionData" EntityType="Celeriq.DataCore.EFDAL.Store.DimensionData" store:Type="Tables" Schema="dbo" />
+		<EntitySet Name="DimensionStore" EntityType="Celeriq.DataCore.EFDAL.Store.DimensionStore" store:Type="Tables" Schema="dbo" />
+		<EntitySet Name="RepositoryActionType" EntityType="Celeriq.DataCore.EFDAL.Store.RepositoryActionType" store:Type="Tables" Schema="dbo" />
+		<EntitySet Name="RepositoryData" EntityType="Celeriq.DataCore.EFDAL.Store.RepositoryData" store:Type="Tables" Schema="dbo" />
+		<EntitySet Name="RepositoryDefinition" EntityType="Celeriq.DataCore.EFDAL.Store.RepositoryDefinition" store:Type="Tables" Schema="dbo" />
+		<EntitySet Name="RepositoryLog" EntityType="Celeriq.DataCore.EFDAL.Store.RepositoryLog" store:Type="Tables" Schema="dbo" />
+		<EntitySet Name="RepositoryStat" EntityType="Celeriq.DataCore.EFDAL.Store.RepositoryStat" store:Type="Tables" Schema="dbo" />
+		<EntitySet Name="ServerStat" EntityType="Celeriq.DataCore.EFDAL.Store.ServerStat" store:Type="Tables" Schema="dbo" />
+		<EntitySet Name="UserAccount" EntityType="Celeriq.DataCore.EFDAL.Store.UserAccount" store:Type="Tables" Schema="dbo" />
+		<AssociationSet Name="FK__DimensionData_DimensionStore" Association="Celeriq.DataCore.EFDAL.Store.FK__DimensionData_DimensionStore">
+			<End Role="DimensionStore" EntitySet="DimensionStore" />
+			<End Role="DimensionData" EntitySet="DimensionData" />
+		</AssociationSet>
+		<AssociationSet Name="FK__RepositoryStat_RepositoryActionType" Association="Celeriq.DataCore.EFDAL.Store.FK__RepositoryStat_RepositoryActionType">
+			<End Role="RepositoryActionType" EntitySet="RepositoryActionType" />
+			<End Role="RepositoryStat" EntitySet="RepositoryStat" />
+		</AssociationSet>
+		<AssociationSet Name="FK__RepositoryData_RepositoryDefinition" Association="Celeriq.DataCore.EFDAL.Store.FK__RepositoryData_RepositoryDefinition">
+			<End Role="RepositoryDefinition" EntitySet="RepositoryDefinition" />
+			<End Role="RepositoryData" EntitySet="RepositoryData" />
+		</AssociationSet>
+		<AssociationSet Name="FK__DimensionStore_RepositoryDefinition" Association="Celeriq.DataCore.EFDAL.Store.FK__DimensionStore_RepositoryDefinition">
+			<End Role="RepositoryDefinition" EntitySet="RepositoryDefinition" />
+			<End Role="DimensionStore" EntitySet="DimensionStore" />
+		</AssociationSet>
+		<AssociationSet Name="FK__RepositoryLog_RepositoryDefinition" Association="Celeriq.DataCore.EFDAL.Store.FK__RepositoryLog_RepositoryDefinition">
+			<End Role="RepositoryDefinition" EntitySet="RepositoryDefinition" />
+			<End Role="RepositoryLog" EntitySet="RepositoryLog" />
+		</AssociationSet>
+		<AssociationSet Name="FK__RepositoryStat_RepositoryDefinition" Association="Celeriq.DataCore.EFDAL.Store.FK__RepositoryStat_RepositoryDefinition">
+			<End Role="RepositoryDefinition" EntitySet="RepositoryDefinition" />
+			<End Role="RepositoryStat" EntitySet="RepositoryStat" />
+		</AssociationSet>
+	</EntityContainer>
+	<EntityType Name="ConfigurationSetting">
+		<Key>
+			<PropertyRef Name="ID" />
+		</Key>
+		<Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+		<Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+		<Property Name="Value" Type="varchar(max)" Nullable="false" />
+		<Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+		<Property Name="ModifiedDate" Type="datetime" />
+		<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+		<Property Name="CreatedDate" Type="datetime" />
+		<Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+	</EntityType>
+	<EntityType Name="DimensionData">
+		<Key>
+			<PropertyRef Name="DimensionDataId" />
+		</Key>
+		<Property Name="Data" Type="varbinary(max)" Nullable="false" />
+		<Property Name="DimensionDataId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+		<Property Name="DimensionsionStoreId" Type="bigint" Nullable="false" />
+		<Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+		<Property Name="ModifiedDate" Type="datetime" />
+		<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+		<Property Name="CreatedDate" Type="datetime" />
+		<Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+	</EntityType>
+	<EntityType Name="DimensionStore">
+		<Key>
+			<PropertyRef Name="DimensionStoreId" />
+		</Key>
+		<Property Name="DIdx" Type="bigint" Nullable="false" />
+		<Property Name="DimensionStoreId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+		<Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+		<Property Name="RepositoryId" Type="int" Nullable="false" />
+		<Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+		<Property Name="ModifiedDate" Type="datetime" />
+		<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+		<Property Name="CreatedDate" Type="datetime" />
+		<Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+	</EntityType>
+	<EntityType Name="RepositoryActionType">
+		<Key>
+			<PropertyRef Name="RepositoryActionTypeId" />
+		</Key>
+		<Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+		<Property Name="RepositoryActionTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+	</EntityType>
+	<EntityType Name="RepositoryData">
+		<Key>
+			<PropertyRef Name="RepositoryDataId" />
+		</Key>
+		<Property Name="Data" Type="varbinary(max)" Nullable="false" />
+		<Property Name="Keyword" Type="varchar(max)" Nullable="true" />
+		<Property Name="RepositoryDataId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+		<Property Name="RepositoryId" Type="int" Nullable="false" />
+		<Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+		<Property Name="ModifiedDate" Type="datetime" />
+		<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+		<Property Name="CreatedDate" Type="datetime" />
+		<Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+	</EntityType>
+	<EntityType Name="RepositoryDefinition">
+		<Key>
+			<PropertyRef Name="RepositoryId" />
+		</Key>
+		<Property Name="DefinitionData" Type="varbinary(max)" Nullable="false" />
+		<Property Name="ItemCount" Type="int" Nullable="false" />
+		<Property Name="MemorySize" Type="bigint" Nullable="false" />
+		<Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+		<Property Name="RepositoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+		<Property Name="UniqueKey" Type="uniqueidentifier" Nullable="false" />
+		<Property Name="VersionHash" Type="bigint" Nullable="false" />
+		<Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+		<Property Name="ModifiedDate" Type="datetime" />
+		<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+		<Property Name="CreatedDate" Type="datetime" />
+		<Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+	</EntityType>
+	<EntityType Name="RepositoryLog">
+		<Key>
+			<PropertyRef Name="RepositoryLogId" />
+		</Key>
+		<Property Name="Count" Type="int" Nullable="false" />
+		<Property Name="ElapsedTime" Type="int" Nullable="false" />
+		<Property Name="IPAddress" Type="varchar" Nullable="false" MaxLength="50" />
+		<Property Name="Query" Type="varchar(max)" Nullable="true" />
+		<Property Name="QueryId" Type="uniqueidentifier" Nullable="false" />
+		<Property Name="RepositoryId" Type="int" Nullable="false" />
+		<Property Name="RepositoryLogId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+		<Property Name="UsedCache" Type="bit" Nullable="false" />
+		<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+		<Property Name="CreatedDate" Type="datetime" />
+	</EntityType>
+	<EntityType Name="RepositoryStat">
+		<Key>
+			<PropertyRef Name="RepositoryStatId" />
+		</Key>
+		<Property Name="Count" Type="int" Nullable="false" />
+		<Property Name="Elapsed" Type="int" Nullable="false" />
+		<Property Name="ItemCount" Type="int" Nullable="false" />
+		<Property Name="RepositoryActionTypeId" Type="int" Nullable="false" />
+		<Property Name="RepositoryId" Type="int" Nullable="false" />
+		<Property Name="RepositoryStatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+		<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+		<Property Name="CreatedDate" Type="datetime" />
+	</EntityType>
+	<EntityType Name="ServerStat">
+		<Key>
+			<PropertyRef Name="ServerStatId" />
+		</Key>
+		<Property Name="AddedDate" Type="datetime" Nullable="false" />
+		<Property Name="MemoryUsageAvailable" Type="bigint" Nullable="false" />
+		<Property Name="MemoryUsageProcess" Type="bigint" Nullable="false" />
+		<Property Name="MemoryUsageTotal" Type="bigint" Nullable="false" />
+		<Property Name="ProcessorUsage" Type="int" Nullable="false" />
+		<Property Name="RepositoryCreateDelta" Type="bigint" Nullable="false" />
+		<Property Name="RepositoryDeleteDelta" Type="bigint" Nullable="false" />
+		<Property Name="RepositoryInMem" Type="int" Nullable="false" />
+		<Property Name="RepositoryLoadDelta" Type="int" Nullable="false" />
+		<Property Name="RepositoryTotal" Type="int" Nullable="false" />
+		<Property Name="RepositoryUnloadDelta" Type="int" Nullable="false" />
+		<Property Name="ServerStatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+	</EntityType>
+	<EntityType Name="UserAccount">
+		<Key>
+			<PropertyRef Name="UserId" />
+		</Key>
+		<Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+		<Property Name="UniqueKey" Type="uniqueidentifier" Nullable="false" />
+		<Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+		<Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+		<Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+		<Property Name="ModifiedDate" Type="datetime" />
+		<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+		<Property Name="CreatedDate" Type="datetime" />
+		<Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+	</EntityType>
+	<Association Name="FK__DimensionData_DimensionStore">
+		<End Role="DimensionStore" Type="Celeriq.DataCore.EFDAL.Store.DimensionStore" Multiplicity="1" />
+		<End Role="DimensionData" Type="Celeriq.DataCore.EFDAL.Store.DimensionData" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="DimensionStore">
+				<PropertyRef Name="DimensionStoreId" />
+			</Principal>
+			<Dependent Role="DimensionData">
+				<PropertyRef Name="DimensionsionStoreId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__RepositoryStat_RepositoryActionType">
+		<End Role="RepositoryActionType" Type="Celeriq.DataCore.EFDAL.Store.RepositoryActionType" Multiplicity="1" />
+		<End Role="RepositoryStat" Type="Celeriq.DataCore.EFDAL.Store.RepositoryStat" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryActionType">
+				<PropertyRef Name="RepositoryActionTypeId" />
+			</Principal>
+			<Dependent Role="RepositoryStat">
+				<PropertyRef Name="RepositoryActionTypeId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__RepositoryData_RepositoryDefinition">
+		<End Role="RepositoryDefinition" Type="Celeriq.DataCore.EFDAL.Store.RepositoryDefinition" Multiplicity="1" />
+		<End Role="RepositoryData" Type="Celeriq.DataCore.EFDAL.Store.RepositoryData" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryDefinition">
+				<PropertyRef Name="RepositoryId" />
+			</Principal>
+			<Dependent Role="RepositoryData">
+				<PropertyRef Name="RepositoryId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__DimensionStore_RepositoryDefinition">
+		<End Role="RepositoryDefinition" Type="Celeriq.DataCore.EFDAL.Store.RepositoryDefinition" Multiplicity="1" />
+		<End Role="DimensionStore" Type="Celeriq.DataCore.EFDAL.Store.DimensionStore" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryDefinition">
+				<PropertyRef Name="RepositoryId" />
+			</Principal>
+			<Dependent Role="DimensionStore">
+				<PropertyRef Name="RepositoryId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__RepositoryLog_RepositoryDefinition">
+		<End Role="RepositoryDefinition" Type="Celeriq.DataCore.EFDAL.Store.RepositoryDefinition" Multiplicity="1" />
+		<End Role="RepositoryLog" Type="Celeriq.DataCore.EFDAL.Store.RepositoryLog" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryDefinition">
+				<PropertyRef Name="RepositoryId" />
+			</Principal>
+			<Dependent Role="RepositoryLog">
+				<PropertyRef Name="RepositoryId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Association Name="FK__RepositoryStat_RepositoryDefinition">
+		<End Role="RepositoryDefinition" Type="Celeriq.DataCore.EFDAL.Store.RepositoryDefinition" Multiplicity="1" />
+		<End Role="RepositoryStat" Type="Celeriq.DataCore.EFDAL.Store.RepositoryStat" Multiplicity="*" />
+		<ReferentialConstraint>
+			<Principal Role="RepositoryDefinition">
+				<PropertyRef Name="RepositoryId" />
+			</Principal>
+			<Dependent Role="RepositoryStat">
+				<PropertyRef Name="RepositoryId" />
+			</Dependent>
+		</ReferentialConstraint>
+	</Association>
+	<Function Name="gen_ConfigurationSetting_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_ID" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_ConfigurationSetting_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Name" Type="varchar" Mode="In" />
+		<Parameter Name="Value" Type="varchar" Mode="In" />
+		<Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+		<Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+	</Function>
+	<Function Name="gen_ConfigurationSetting_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Name" Type="varchar" Mode="In" />
+		<Parameter Name="Value" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+		<Parameter Name="Original_ID" Type="int" Mode="In" />
+		<Parameter Name="Original_Timestamp" Type="timestamp" Mode="In" />
+	</Function>
+	<Function Name="gen_DimensionData_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_DimensionDataId" Type="bigint" Mode="In" />
+		<Parameter Name="DimensionStore_DimensionStoreId" Type="bigint" Mode="In" />
+	</Function>
+	<Function Name="gen_DimensionData_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Data" Type="varbinary" Mode="In" />
+		<Parameter Name="DimensionsionStoreId" Type="bigint" Mode="In" />
+		<Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+		<Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+	</Function>
+	<Function Name="gen_DimensionData_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Data" Type="varbinary" Mode="In" />
+		<Parameter Name="DimensionsionStoreId" Type="bigint" Mode="In" />
+		<Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+		<Parameter Name="Original_DimensionDataId" Type="bigint" Mode="In" />
+		<Parameter Name="Original_Timestamp" Type="timestamp" Mode="In" />
+	</Function>
+	<Function Name="gen_DimensionStore_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_DimensionStoreId" Type="bigint" Mode="In" />
+		<Parameter Name="RepositoryDefinition_RepositoryId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_DimensionStore_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="RepositoryId" Type="int" Mode="In" />
+		<Parameter Name="DIdx" Type="bigint" Mode="In" />
+		<Parameter Name="Name" Type="varchar" Mode="In" />
+		<Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+		<Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+	</Function>
+	<Function Name="gen_DimensionStore_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="RepositoryId" Type="int" Mode="In" />
+		<Parameter Name="DIdx" Type="bigint" Mode="In" />
+		<Parameter Name="Name" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+		<Parameter Name="Original_DimensionStoreId" Type="bigint" Mode="In" />
+		<Parameter Name="Original_Timestamp" Type="timestamp" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryActionType_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_RepositoryActionTypeId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryActionType_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Name" Type="varchar" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryActionType_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Name" Type="varchar" Mode="In" />
+		<Parameter Name="Original_RepositoryActionTypeId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryData_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_RepositoryDataId" Type="bigint" Mode="In" />
+		<Parameter Name="RepositoryDefinition_RepositoryId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryData_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="RepositoryId" Type="int" Mode="In" />
+		<Parameter Name="Data" Type="varbinary" Mode="In" />
+		<Parameter Name="Keyword" Type="varchar" Mode="In" />
+		<Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+		<Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryData_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="RepositoryId" Type="int" Mode="In" />
+		<Parameter Name="Data" Type="varbinary" Mode="In" />
+		<Parameter Name="Keyword" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+		<Parameter Name="Original_RepositoryDataId" Type="bigint" Mode="In" />
+		<Parameter Name="Original_Timestamp" Type="timestamp" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryDefinition_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_RepositoryId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryDefinition_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="ItemCount" Type="int" Mode="In" />
+		<Parameter Name="UniqueKey" Type="uniqueidentifier" Mode="In" />
+		<Parameter Name="MemorySize" Type="bigint" Mode="In" />
+		<Parameter Name="Name" Type="varchar" Mode="In" />
+		<Parameter Name="DefinitionData" Type="varbinary" Mode="In" />
+		<Parameter Name="VersionHash" Type="bigint" Mode="In" />
+		<Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+		<Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryDefinition_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="ItemCount" Type="int" Mode="In" />
+		<Parameter Name="UniqueKey" Type="uniqueidentifier" Mode="In" />
+		<Parameter Name="MemorySize" Type="bigint" Mode="In" />
+		<Parameter Name="Name" Type="varchar" Mode="In" />
+		<Parameter Name="DefinitionData" Type="varbinary" Mode="In" />
+		<Parameter Name="VersionHash" Type="bigint" Mode="In" />
+		<Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+		<Parameter Name="Original_RepositoryId" Type="int" Mode="In" />
+		<Parameter Name="Original_Timestamp" Type="timestamp" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryLog_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_RepositoryLogId" Type="int" Mode="In" />
+		<Parameter Name="RepositoryDefinition_RepositoryId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryLog_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="IPAddress" Type="varchar" Mode="In" />
+		<Parameter Name="RepositoryId" Type="int" Mode="In" />
+		<Parameter Name="Count" Type="int" Mode="In" />
+		<Parameter Name="ElapsedTime" Type="int" Mode="In" />
+		<Parameter Name="UsedCache" Type="bit" Mode="In" />
+		<Parameter Name="QueryId" Type="uniqueidentifier" Mode="In" />
+		<Parameter Name="Query" Type="varchar" Mode="In" />
+		<Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+		<Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryLog_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="IPAddress" Type="varchar" Mode="In" />
+		<Parameter Name="RepositoryId" Type="int" Mode="In" />
+		<Parameter Name="Count" Type="int" Mode="In" />
+		<Parameter Name="ElapsedTime" Type="int" Mode="In" />
+		<Parameter Name="UsedCache" Type="bit" Mode="In" />
+		<Parameter Name="QueryId" Type="uniqueidentifier" Mode="In" />
+		<Parameter Name="Query" Type="varchar" Mode="In" />
+		<Parameter Name="Original_RepositoryLogId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryStat_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_RepositoryStatId" Type="int" Mode="In" />
+		<Parameter Name="RepositoryActionType_RepositoryActionTypeId" Type="int" Mode="In" />
+		<Parameter Name="RepositoryDefinition_RepositoryId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryStat_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="RepositoryId" Type="int" Mode="In" />
+		<Parameter Name="Elapsed" Type="int" Mode="In" />
+		<Parameter Name="RepositoryActionTypeId" Type="int" Mode="In" />
+		<Parameter Name="Count" Type="int" Mode="In" />
+		<Parameter Name="ItemCount" Type="int" Mode="In" />
+		<Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+		<Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+	</Function>
+	<Function Name="gen_RepositoryStat_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="RepositoryId" Type="int" Mode="In" />
+		<Parameter Name="Elapsed" Type="int" Mode="In" />
+		<Parameter Name="RepositoryActionTypeId" Type="int" Mode="In" />
+		<Parameter Name="Count" Type="int" Mode="In" />
+		<Parameter Name="ItemCount" Type="int" Mode="In" />
+		<Parameter Name="Original_RepositoryStatId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_ServerStat_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_ServerStatId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_ServerStat_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="MemoryUsageTotal" Type="bigint" Mode="In" />
+		<Parameter Name="MemoryUsageAvailable" Type="bigint" Mode="In" />
+		<Parameter Name="RepositoryInMem" Type="int" Mode="In" />
+		<Parameter Name="RepositoryLoadDelta" Type="int" Mode="In" />
+		<Parameter Name="RepositoryUnloadDelta" Type="int" Mode="In" />
+		<Parameter Name="RepositoryTotal" Type="int" Mode="In" />
+		<Parameter Name="RepositoryCreateDelta" Type="bigint" Mode="In" />
+		<Parameter Name="RepositoryDeleteDelta" Type="bigint" Mode="In" />
+		<Parameter Name="ProcessorUsage" Type="int" Mode="In" />
+		<Parameter Name="AddedDate" Type="datetime" Mode="In" />
+		<Parameter Name="MemoryUsageProcess" Type="bigint" Mode="In" />
+	</Function>
+	<Function Name="gen_ServerStat_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="MemoryUsageTotal" Type="bigint" Mode="In" />
+		<Parameter Name="MemoryUsageAvailable" Type="bigint" Mode="In" />
+		<Parameter Name="RepositoryInMem" Type="int" Mode="In" />
+		<Parameter Name="RepositoryLoadDelta" Type="int" Mode="In" />
+		<Parameter Name="RepositoryUnloadDelta" Type="int" Mode="In" />
+		<Parameter Name="RepositoryTotal" Type="int" Mode="In" />
+		<Parameter Name="RepositoryCreateDelta" Type="bigint" Mode="In" />
+		<Parameter Name="RepositoryDeleteDelta" Type="bigint" Mode="In" />
+		<Parameter Name="ProcessorUsage" Type="int" Mode="In" />
+		<Parameter Name="AddedDate" Type="datetime" Mode="In" />
+		<Parameter Name="MemoryUsageProcess" Type="bigint" Mode="In" />
+		<Parameter Name="Original_ServerStatId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_UserAccount_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="Original_UserId" Type="int" Mode="In" />
+	</Function>
+	<Function Name="gen_UserAccount_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="UniqueKey" Type="uniqueidentifier" Mode="In" />
+		<Parameter Name="UserName" Type="varchar" Mode="In" />
+		<Parameter Name="Password" Type="varchar" Mode="In" />
+		<Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+		<Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+	</Function>
+	<Function Name="gen_UserAccount_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+		<Parameter Name="UniqueKey" Type="uniqueidentifier" Mode="In" />
+		<Parameter Name="UserName" Type="varchar" Mode="In" />
+		<Parameter Name="Password" Type="varchar" Mode="In" />
+		<Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+		<Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+		<Parameter Name="Original_UserId" Type="int" Mode="In" />
+		<Parameter Name="Original_Timestamp" Type="timestamp" Mode="In" />
+	</Function>
+</Schema>

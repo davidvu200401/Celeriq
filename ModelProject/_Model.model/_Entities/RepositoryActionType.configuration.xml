@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<configuration type="entity" name="RepositoryActionType" id="884c0895-93f6-4250-a174-b40e55c0839b" allowaudittracking="0" allowcreateaudit="0" allowmodifyaudit="0" allowtimestamp="0" codefacade="" immutable="1" enforceprimarykey="1" isassociative="0" typedentity="DatabaseTable" schema="" generatesdoublederived="0" isgenerated="1" isTenant="0">
+		<summary><![CDATA[]]></summary>
+		<fieldset>
+				<field id="be73783c-bf82-4e82-b71f-fde56db88b0c" name="Name" nullable="0" datatype="VarChar" identity="None" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="0" isprimarykey="0" Iscalculated="0" isunique="0" length="50" scale="0" sortorder="2" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+				<field id="8f1ec658-d0d9-46dc-8b7c-f3fe660f628a" name="RepositoryActionTypeId" nullable="0" datatype="Int" identity="Database" codefacade="" dataformatstring="" default="" defaultisfunc="0" formula="" isgenerated="1" isindexed="1" isprimarykey="1" Iscalculated="0" isunique="1" length="4" scale="0" sortorder="1" isreadonly="0" category="" collate="" friendlyname="" isbrowsable="1" max="NaN" min="NaN" validationexpression="">
+						<summary><![CDATA[]]></summary>
+				</field>
+		</fieldset>
+</configuration>

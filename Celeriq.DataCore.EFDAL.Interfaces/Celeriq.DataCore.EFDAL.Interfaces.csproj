@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F41C1A91-5A71-4BF8-ADD0-A4ABA23C7E28}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Celeriq.DataCore.EFDAL.Interfaces</RootNamespace>
+    <AssemblyName>Celeriq.DataCore.EFDAL.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Celeriq.DataCore.EFDAL.Interfaces.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Docs\AssemblyInfoGlobal.cs">
+      <Link>Properties\AssemblyInfoGlobal.cs</Link>
+    </Compile>
+    <Compile Include="Entity\IConfigurationSetting.cs" />
+    <Compile Include="Entity\IConfigurationSetting.Generated.cs">
+      <DependentUpon>IConfigurationSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\IDimensionData.cs" />
+    <Compile Include="Entity\IDimensionData.Generated.cs">
+      <DependentUpon>IDimensionData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\IDimensionStore.cs" />
+    <Compile Include="Entity\IDimensionStore.Generated.cs">
+      <DependentUpon>IDimensionStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\IRepositoryActionType.cs" />
+    <Compile Include="Entity\IRepositoryActionType.Generated.cs">
+      <DependentUpon>IRepositoryActionType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\IRepositoryData.cs" />
+    <Compile Include="Entity\IRepositoryData.Generated.cs">
+      <DependentUpon>IRepositoryData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\IRepositoryDefinition.cs" />
+    <Compile Include="Entity\IRepositoryDefinition.Generated.cs">
+      <DependentUpon>IRepositoryDefinition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\IRepositoryLog.cs" />
+    <Compile Include="Entity\IRepositoryLog.Generated.cs">
+      <DependentUpon>IRepositoryLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\IRepositoryStat.cs" />
+    <Compile Include="Entity\IRepositoryStat.Generated.cs">
+      <DependentUpon>IRepositoryStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\IServerStat.cs" />
+    <Compile Include="Entity\IServerStat.Generated.cs">
+      <DependentUpon>IServerStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\IUserAccount.cs" />
+    <Compile Include="Entity\IUserAccount.Generated.cs">
+      <DependentUpon>IUserAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IDataCoreEntities.cs" />
+    <Compile Include="IDataCoreEntities.Generated.cs">
+      <DependentUpon>IDataCoreEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+			 Other similar extension points exist, see Microsoft.Common.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetName).*" "$(SolutionDir)Bin\"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>if not exist "$(SolutionDir)bin" mkdir "$(SolutionDir)bin"
+attrib -r "$(SolutionDir)Bin\*.*"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

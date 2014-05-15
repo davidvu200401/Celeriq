@@ -1,0 +1,29 @@
+<repository>
+	<name>AutoItem</name>
+	<createddate>2011-10-01</createddate>
+	<id>297922e9-ea6d-402b-b33b-974ecf64206f</id>
+	<serverobjecttype>Celeriq.API.Q297922e9ea6d402bb33b974ecf64206f.Service.API.RepositoryService</serverobjecttype>
+	<interfaceobjecttype>Celeriq.API.Q297922e9ea6d402bb33b974ecf64206f.Interfaces.IDataModel</interfaceobjecttype>
+	<interfaceassembly>Celeriq.API.Q297922e9ea6d402bb33b974ecf64206f.Interfaces.dll</interfaceassembly>
+	<serverassembly>Celeriq.API.Q297922e9ea6d402bb33b974ecf64206f.Services.dll</serverassembly>
+	<fields>
+		<field name="AutoID" datatype="Int" fieldtype="Field" isprimarykey="True" />
+		<field name="Make" datatype="String" fieldtype="Dimension" length="100" />
+		<field name="Model" datatype="String" fieldtype="Dimension" length="100" parent="Make" />
+		<field name="State" datatype="String" fieldtype="Dimension" length="100" />
+		<field name="ExteriorColor" datatype="String" fieldtype="Dimension" length="100" />
+		<field name="InteriorColor" datatype="String" fieldtype="Dimension" length="100" />
+		<field name="Condition" datatype="String" fieldtype="Dimension" length="100" />
+		<field name="Mileage" datatype="Int" fieldtype="Dimension" numericbreak="5000" />
+		<field name="Price" datatype="Int" fieldtype="Dimension" numericbreak="5000" />
+		<field name="Transmission" datatype="String" fieldtype="Dimension" length="100" />
+		<field name="Year" datatype="Int" fieldtype="Dimension" />
+		<field name="City" datatype="String" fieldtype="Field" length="100" />
+		<field name="Location" datatype="GeoCode" fieldtype="Field" />
+		<field name="Metro" datatype="String" fieldtype="Dimension" length="100" />
+		<field name="PostDate" datatype="DateTime" fieldtype="Field" />
+		<field name="ZIP" datatype="String" fieldtype="Dimension" length="10" />
+		<field name="Description" datatype="String" fieldtype="Dimension" length="4000" />
+		<field name="Title" datatype="String" fieldtype="Dimension" length="150" />
+	</fields>
+</repository>

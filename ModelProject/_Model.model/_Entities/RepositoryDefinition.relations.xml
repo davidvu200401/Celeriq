@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<configuration type="entity.relations" id="430f2809-2e2c-456d-9a20-50fb4a57f3ca">
+		<relation id="99c4cb11-cb26-48e7-b279-3a4a1c55032a" childid="986b5aa7-d627-4613-ac24-fdeaf41a65cb" isenforced="1" isinherited="0" rolename="">
+				<summary><![CDATA[]]></summary>
+				<relationfieldset>
+						<field id="57626ae7-332d-47ec-9d00-46c1b45a961c" sourcefieldid="f28d9886-35e0-4e67-acd0-08ddfa54b60b" targetfieldid="df5db65d-6145-4396-b545-a53c1026e9cd" />
+				</relationfieldset>
+		</relation>
+		<relation id="cae47b47-ba5b-4ccb-92ac-47215bbfc0e5" childid="1411264d-0660-4087-a060-bb5a1b1193cd" isenforced="1" isinherited="0" rolename="">
+				<summary><![CDATA[]]></summary>
+				<relationfieldset>
+						<field id="57dc6958-b61a-4592-8bbc-1e0f16732ccf" sourcefieldid="f28d9886-35e0-4e67-acd0-08ddfa54b60b" targetfieldid="85233b6f-468a-4466-abb6-66290de04cec" />
+				</relationfieldset>
+		</relation>
+		<relation id="637f605e-72c8-413d-a738-805981abab92" childid="88880817-84c4-4dd6-9222-9d4b36ddacde" isenforced="1" isinherited="0" rolename="">
+				<summary><![CDATA[]]></summary>
+				<relationfieldset>
+						<field id="02366035-7fb6-42c9-b044-602c82da1a97" sourcefieldid="f28d9886-35e0-4e67-acd0-08ddfa54b60b" targetfieldid="ad83d9b2-44a3-44ad-9c75-3b8982244a43" />
+				</relationfieldset>
+		</relation>
+		<relation id="5b729f55-0792-484e-bd1d-8463cf0db69b" childid="3ff6b47a-eb8b-4f2f-af0f-24d0a0f985f4" isenforced="1" isinherited="0" rolename="">
+				<summary><![CDATA[]]></summary>
+				<relationfieldset>
+						<field id="a03ba939-47e4-4269-9465-09a94feb766c" sourcefieldid="f28d9886-35e0-4e67-acd0-08ddfa54b60b" targetfieldid="03ad7bc1-dc99-4e8b-a2b0-b9031001e460" />
+				</relationfieldset>
+		</relation>
+</configuration>

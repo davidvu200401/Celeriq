@@ -1,0 +1,6 @@
+﻿This test is for a repository with the following fields
+ID, int
+Make, string (dimension)
+PostedDate, DateTime
+Location, GeoCode
+Price, int, (dimension-banded)

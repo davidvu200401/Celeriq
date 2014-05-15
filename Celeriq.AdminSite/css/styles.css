@@ -1,0 +1,357 @@
+﻿html {
+    margin:0px;
+    padding:0px;
+}
+
+body {
+    background-color:#F7F7F2;
+    font-size:16px;
+    margin:0px;
+    padding:0px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top:0px;
+}
+
+a,a:hover,a:visited {
+    color:#68217A;
+    text-decoration:none;
+}
+
+.login-box {
+    text-align:left;
+    width:300px;
+}
+
+input[type="text"],
+textarea,
+input[type="password"],
+input[type="email"] {
+    -webkit-appearance: none;
+    border: 1px solid #ccc;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color:#222222;
+    padding:4px;
+}
+
+.prettygrid {
+    border: solid 1px #cccccc;
+    border-right: 0px;
+    width: 100%;
+}
+
+.prettygrid td, .prettygrid th {
+    padding: 4px 2px 4px 0px;
+    border-bottom: solid 1px #cccccc;
+    border-right: solid 1px #cccccc;
+}
+
+.prettygrid th {
+    text-align: center;
+    white-space: nowrap;
+    border: solid 1px #555555;
+}
+
+.prettygrid td, .prettygrid tr, .prettygrid th {
+    text-indent: 5px;
+    padding-left: 0px;
+    padding-right: 4px;
+    vertical-align: middle;
+}
+
+.prettygrid .prettygrid-row i, .prettygrid .prettygrid-rowalt i { font-size: 13pt; }
+
+.prettygrid .prettygrid-row:hover, .prettygrid-rowalt:hover {
+    background-color: #C5E0F3;
+    color: black;
+}
+
+.prettygrid .prettygrid-row:hover a:not([disabled=disabled]), .prettygrid-rowalt:hover a:not([disabled=disabled]), .prettygrid-rowalt:visited a:not([disabled=disabled]) { color: black; }
+
+.prettygrid.selectable td:hover { cursor: pointer; }
+
+.prettygrid tr.selected {
+    background-color: #0096d6;
+    color: white;
+}
+
+.prettygrid tr.selected a { color: White; }
+
+.prettygrid a { text-decoration: none; }
+
+.prettygrid img.sort { margin: 0px 0px 0px 6px; }
+
+.prettygrid .dropdownwithoptions {
+    font-size: 14px !important;
+    text-indent: 0px;
+}
+
+.prettygrid .dropdownwithoptions a { font-size: 14px !important; }
+
+.prettygrid-header {
+    background-color: #555555;
+    border-bottom: solid 1px #cccccc;
+    color: white;
+    font-size: 10pt;
+}
+
+.prettygrid-header a {
+    color: white;
+    text-decoration: none;
+}
+
+.prettygrid-header a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.prettygrid-row {
+    background-color: white;
+    color: #767676;
+    font-size: 10pt;
+}
+
+.prettygrid-rowalt {
+    background-color: #e5e8e8;
+    color: #767676;
+    font-size: 10pt;
+}
+
+.prettygrid-empty {
+    color: #1d95cb;
+    padding: 0px;
+    margin: 0;
+}
+
+/****************** paging ************/
+
+.paging {
+    border: solid 1px #ccc;
+    padding: 5px;
+    background-color: White;
+    margin: 10px 0px 0px 0px;
+    text-align: right;
+    color: #007DBA;
+}
+
+.paging span {
+    display: inline;
+    font-weight: normal;
+    cursor: pointer;
+    margin: 0px 2px 0px 2px;
+}
+
+.paging .p { float: left; }
+
+.paging span.sel {
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* PAGING NEW */
+
+.pagingcontainer {
+    text-align: left;
+    margin: 10px 0px 10px 0px;
+    line-height: 21px;
+    vertical-align: middle;
+    color: #555555;
+}
+
+.pagingcontainer h1 {
+    font-size: 14pt;
+    font-weight: normal;
+}
+
+.pagingheader {
+    font-size: 14pt;
+    font-weight: normal;
+    color: #555555;
+}
+
+.pagingtextsmall {
+    font-size: 10pt;
+    font-weight: normal;
+    font-weight: bold;
+}
+
+.pagingtexthilite a {
+    font-size: 10pt;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.paginggotopage {
+    font-size: 10pt;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.paginggotopage i {
+    border: solid 1px #ccc;
+    padding: 6px;
+    margin: 0px 6px 0px 6px;
+    color: #555555;
+}
+
+.paginggotopage i:hover { color: #CCC; }
+
+.paginggotopage a {
+    text-decoration: none;
+    color: #555555;
+}
+
+.paginggotopage a:hover {
+    text-decoration: none;
+    color: #CCC;
+}
+
+.paginggotopageselected {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+/*************************************/
+
+.infoblock .prompt
+{
+    display:inline-block;
+    width:200px;
+    padding-right:20px;
+}
+
+.bigboxes input[type="text"],
+.bigboxes textarea,
+.bigboxes input[type="password"],
+.bigboxes input[type="email"] {
+    -webkit-appearance: none;
+    border: 1px solid #ccc;
+    width: 307px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color:#222222
+}
+
+.bigboxes textarea { height: 100px; }
+
+.bigboxes textarea.fullwidth {
+    width: 95%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.bigboxes select {
+    border: 1px solid #ccc;
+    width: 320px;
+    padding: 0px 0px 0px 10px;
+    margin: 0px 0px 8px 0px;
+    padding: 4px;
+    font-size: 16px;
+}
+
+.bigboxes select[multiple=multiple] { height: auto; }
+
+.bigboxes input[type="checkbox"] {
+    border: 1px solid #ccc;
+    margin: 0px 10px 0px 0px;
+}
+
+.bigboxes label { }
+
+.bigboxes .label {
+    font-weight: bold;
+    width: 320px;
+    margin: 10px 0px 20px 0px;
+    text-indent: 0;
+    display: inline-block;
+}
+
+.bigboxes .label label[for] {
+    margin: 0px;
+    padding: 0px;
+}
+
+.bigboxes input[type="radio"] { margin: 0px 5px 5px 0px; }
+
+input[type="radio"] { margin-bottom: 6px; }
+
+.bigboxes .radioblock { margin-bottom: 8px; }
+
+.celeriqhistoryblock a {
+    margin-right:12px;
+}
+
+.explain {
+    margin-left:10px;
+    font-style:italic;
+    color:gray;
+}
+
+.btn-flat,.btn-flat:hover, .btn-flat:focus {
+    background-color:#68217A;
+    color:white;
+}
+
+.logo {
+    font-size:40px;
+}
+
+.logo i {
+    margin-right:10px;
+    color:#68217A;
+}
+
+.header {
+    background-color:white;
+    border-bottom:solid 2px #cccccc;
+}
+
+.header a {
+    margin-left:10px;
+}
+
+.maincontainer {
+    text-align:left;
+    max-width:1170px;
+    padding:0px 10px;
+}
+
+.maintable
+{
+    margin:0px 0px 0px 0px;
+    padding:0px;
+}
+
+.maininner {
+    min-height:400px;
+}
+
+.linegraph {
+    width:100%;
+    height:200px;
+    margin-bottom:10px;
+    border:solid 1px #cccccc;
+}
+
+.spacedblock {
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+.repo-griditem {
+    font-size:11px;
+    padding:6px 4px 6px 4px;
+    border-bottom:solid 1px #cccccc;
+}
+
+.alternaterow {
+    background-color:#fdfdfd;
+    border-left:solid 1px #cccccc;
+    border-right:solid 1px  #cccccc;
+}

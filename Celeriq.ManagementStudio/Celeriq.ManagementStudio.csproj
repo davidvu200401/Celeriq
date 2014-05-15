@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99B1DAF7-5E90-4CFE-A0B2-F933618A6583}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Celeriq.ManagementStudio</RootNamespace>
+    <AssemblyName>Celeriq.ManagementStudio</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>server.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Celeriq.Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\Celeriq.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="FastColoredTextBox">
+      <HintPath>..\ThirdParty\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\ThirdParty\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\ThirdParty\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Docs\AssemblyInfoGlobal.cs">
+      <Link>Properties\AssemblyInfoGlobal.cs</Link>
+    </Compile>
+    <Compile Include="CodeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodeWindow.Designer.cs">
+      <DependentUpon>CodeWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignRepositoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignRepositoryForm.Designer.cs">
+      <DependentUpon>DesignRepositoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditFieldForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditFieldForm.Designer.cs">
+      <DependentUpon>EditFieldForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Embedded\SampleProject\Objects\PagingURL.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\Objects\URL.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\Objects\URLParameter.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\Objects\URLParameterCollection.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\Repository.cs" />
+    <Compile Include="EventArguments\TextEventArgs.cs" />
+    <Compile Include="EventArguments\RepositoryListEventArgs.cs" />
+    <Compile Include="EventArguments\RepositoryErrorEventArgs.cs" />
+    <Compile Include="EventArguments\RepositoryEventArgs.cs" />
+    <Compile Include="MainForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm2.Designer.cs">
+      <DependentUpon>MainForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\ApplicationUserSetting.cs" />
+    <Compile Include="Objects\ClientCodeHelper.cs" />
+    <Compile Include="Objects\ConnectionCache.cs" />
+    <Compile Include="Objects\Utilities.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerConnectionForm.Designer.cs">
+      <DependentUpon>ServerConnectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServerInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerInfoForm.Designer.cs">
+      <DependentUpon>ServerInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ServerPropertySheet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ServerPropertySheet.Designer.cs">
+      <DependentUpon>ServerPropertySheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserEditForm.Designer.cs">
+      <DependentUpon>UserEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserListForm.Designer.cs">
+      <DependentUpon>UserListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForm.Designer.cs">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CodeWindow.resx">
+      <DependentUpon>CodeWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignRepositoryForm.resx">
+      <DependentUpon>DesignRepositoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditFieldForm.resx">
+      <DependentUpon>EditFieldForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm2.resx">
+      <DependentUpon>MainForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServerConnectionForm.resx">
+      <DependentUpon>ServerConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServerInfoForm.resx">
+      <DependentUpon>ServerInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ServerPropertySheet.resx">
+      <DependentUpon>ServerPropertySheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserEditForm.resx">
+      <DependentUpon>UserEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserListForm.resx">
+      <DependentUpon>UserListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm.resx">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Embedded\SampleProject\Web.config" />
+    <EmbeddedResource Include="Embedded\SampleProject\Default.aspx.designer.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\UserControls\AppliedFiltersControl.ascx.designer.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\UserControls\DimensionControl.ascx.designer.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\UserControls\PagingControl.ascx.designer.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\Default.aspx.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\UserControls\AppliedFiltersControl.ascx.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\UserControls\DimensionControl.ascx.cs" />
+    <EmbeddedResource Include="Embedded\SampleProject\UserControls\PagingControl.ascx.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embedded\SampleProject\CeleriqTestWebsite.csproj" />
+    <EmbeddedResource Include="Embedded\SampleProject\CeleriqTestWebsite.sln" />
+    <EmbeddedResource Include="Embedded\SampleProject\Default.aspx" />
+    <EmbeddedResource Include="Embedded\SampleProject\styles.css" />
+    <EmbeddedResource Include="Embedded\SampleProject\UserControls\AppliedFiltersControl.ascx" />
+    <EmbeddedResource Include="Embedded\SampleProject\UserControls\DimensionControl.ascx" />
+    <EmbeddedResource Include="Embedded\SampleProject\UserControls\PagingControl.ascx" />
+    <Content Include="images\application_put.png" />
+    <Content Include="images\code.png" />
+    <Content Include="images\compile.jpg" />
+    <Content Include="images\database.png" />
+    <Content Include="images\database_stopped.png" />
+    <Content Include="images\export.ico" />
+    <Content Include="images\export.png" />
+    <Content Include="images\main.ico" />
+    <Content Include="images\main.png" />
+    <Content Include="images\play.png" />
+    <Content Include="images\refresh.jpg" />
+    <Content Include="images\stop.jpg" />
+    <Content Include="server.ico" />
+    <Content Include="xmldesc.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Celeriq.Common\Celeriq.Common.csproj">
+      <Project>{0fd1eab9-5fc3-480a-bd54-6c88c8f5de41}</Project>
+      <Name>Celeriq.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>attrib -r "$(SolutionDir)Bin\*.*"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetName).*" "$(SolutionDir)Bin\"
+copy $(ProjectDir)"xmldesc.txt" $(TargetDir)"xmldesc.txt"
+copy /y "$(TargetDir)*.dll" "C:\Celeriq\ClientTools"
+copy /y "$(TargetDir)*.pdb" "C:\Celeriq\ClientTools"
+copy /y "$(TargetDir)*.exe" "C:\Celeriq\ClientTools"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<configuration type="entity.indexes" id="7660c8f0-0c1f-4bcc-8728-c4e343c6f5b0">
+		<index id="6da0259a-ba51-48b1-974a-6eacc91a5c7a" clustered="1" importedname="" indextype="0" isunique="1">
+				<summary><![CDATA[]]></summary>
+				<indexcolumnset>
+						<column id="7d6bd057-1c89-433d-a0df-a15a42f9b19f" ascending="1" fieldid="dfcdf721-88da-4e2d-89db-38630b4fd67b" sortorder="1" />
+				</indexcolumnset>
+		</index>
+		<index id="4f3086d7-ccff-432c-b0b8-043a6a4190bb" clustered="0" importedname="" indextype="1" isunique="0">
+				<summary><![CDATA[]]></summary>
+				<indexcolumnset>
+						<column id="ddcc26b1-fbfb-4367-9cce-54d2e6ad03ae" ascending="1" fieldid="863aa1b4-fbc1-4c57-aa7c-63f95fcbe20e" sortorder="1" />
+				</indexcolumnset>
+		</index>
+</configuration>

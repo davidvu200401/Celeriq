@@ -1,0 +1,286 @@
+﻿body {
+    background-color: #F2F2F2;
+}
+
+html {
+    font-family:helvetica,Arial,Verdana,Sans-serif;
+    font-size: 12pt;
+}
+
+.dimension-block
+{
+    padding-right:10px;
+}
+
+.main-container
+{
+    
+}
+
+.main-block
+{
+    text-align:left;
+    width:1000px;
+    background-color: white;
+    border: solid 1px #cccccc;
+}
+
+.prettygrid
+{
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+a
+{
+    font-size: 10pt;
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+/*-------------Tables-------------*/
+
+table{
+  font-size: 15px;
+  color: #000;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  text-align:left;
+}
+
+table a{
+  color: #007DBA;
+}
+
+tr {
+    vertical-align:top;
+}
+
+td,tr{
+  text-indent: 8px;
+  border-right: 1px solid #ccc;
+}
+
+td,th
+{
+    vertical-align: top;
+}
+
+.prettygrid{
+    border: solid 1px #cccccc;
+    border-right: 0px;
+    width: 100%;
+}
+
+.prettygrid td,th {
+    padding: 6px 4px 6px 0px;
+    border-bottom: solid 1px #cccccc;
+    border-right: solid 1px #cccccc;
+}
+
+.prettygrid th
+{
+    text-align:center;
+    white-space:nowrap;
+}
+
+.prettygrid.selectable td:hover {
+    cursor:pointer;
+}
+
+.prettygrid tr.selected
+{
+    background-color:darkgray;
+    color:White;
+}
+
+.prettygrid tr.selected a {
+    color:White;
+    text-decoration: underline;
+}
+
+.prettygrid a 
+{
+    text-decoration: none;
+}
+
+.prettygrid img.sort {
+    margin:0px 0px 0px 6px;
+}
+
+.prettygrid-header {
+    background-color: #555555;
+    border-bottom: solid 1px #cccccc;
+    color:white;
+}
+
+.prettygrid-header a
+{
+    color:white;
+    text-decoration: none;
+}
+
+.prettygrid-header a:hover
+{
+    color:white;
+    text-decoration: none;
+}
+
+.prettygrid-row {
+    background-color: white;
+    color: #767676;
+    font-size:14px;
+}
+
+.prettygrid-rowalt {
+    background-color: #e5e8e8;
+    color: #767676;
+    font-size:14px;
+}
+
+
+/****************** paging ************/
+.paging {
+    border: solid 1px #ccc;
+    padding: 5px;
+    background-color:White;
+    margin: 10px 0px 0px 0px;
+    text-align:right;
+    color:#007DBA;
+}
+
+.paging span
+{
+    display:inline;
+    font-weight:normal;
+    cursor:pointer;
+    margin: 0px 2px 0px 2px;
+}
+
+.paging .p {
+ float:left;
+}
+
+.paging span.sel {
+    font-size: larger;
+    font-weight:bold;
+}
+
+/* PAGING NEW */
+
+.pagingcontainer
+{
+    text-align:left;
+}
+
+.pagingcontainer h1
+{
+    color:#555555;
+    font-size:14pt;
+    font-weight:normal;
+}
+
+.pagingheader
+{
+    color:#555555;
+    font-size:14pt;
+    font-weight:normal;
+}
+
+.pagingtextsmall
+{
+    color:#555555;
+    font-size:10pt;
+    font-weight:normal; 
+    font-weight:bold;
+}
+
+.pagingtexthilite a
+{
+    color:#006692;
+    font-size:10pt;
+    font-weight:bold; 
+    text-decoration:none;
+}
+
+.paginggotopage
+{
+    color:#555555;
+    font-size:10pt;
+    font-weight:bold;
+}
+
+.paginggotopage a
+{
+    color:#006692;
+    text-decoration:none;
+}
+
+.paginggotopageselected
+{
+    color:#555555;
+    font-size:12pt;
+    font-weight:bold;
+}
+
+/*************************************/
+
+.dimensioncontainer
+{
+	margin-bottom:8px; 
+}
+
+.dimensioncontainer a
+{
+	color:#7c7369;
+	font-size:10px;
+}
+
+.dimensionheader
+{
+	color:#D95C05;
+	font-size:12pt;
+	font-weight:bold;
+	padding:4px;
+	margin:0px;
+	padding:0px;
+}
+
+.dimensionheader a
+{
+	color:#D95C05;
+	font-size:12pt;
+	font-weight:bold;
+}
+
+.dimensionheader h4
+{
+	color:#D95C05;
+	font-size:12pt;
+	font-weight:bold;
+	margin:0px;
+	padding:0px;
+}
+
+.dimensiondata
+{
+	padding:4px;
+	color:#7c7369;
+	font-size:11px;
+}
+
+.dimensiondata a
+{
+	margin-left:6px;
+	padding:4px;
+	color:#7c7369;
+	font-size:12px;
+}
