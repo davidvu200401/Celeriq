@@ -545,9 +545,9 @@ namespace Celeriq.Server.Core
                     }
                 }
             }
-            catch (Exception ec)
+            catch (Exception ex)
             {
-                throw;
+                Logger.LogError(ex);
             }
         }
 

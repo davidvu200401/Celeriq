@@ -85,22 +85,32 @@ namespace Celeriq.Server.Core
                     var options = new ParallelOptions ();//{ MaxDegreeOfParallelism = 1 };
                     Parallel.ForEach(files, options, file =>
                     {
-                        var repositoryDef = new RepositorySchema();
-                        repositoryDef.Load(file);
-                        repositoryDef.CachePath = Path.Combine(ConfigHelper.DataPath, repositoryDef.ID.ToString());
-                        var repository = new Celeriq.RepositoryAPI.Repository(0, repositoryDef, ConfigHelper.MasterKeys, _system);
-                        var remoteItem = new RemotingObjectCache() { ServiceInstance = repository, Repository = repositoryDef };
-                        remoteItem.VersionHash = repositoryDef.VersionHash;
-                        repository.RemotingObject = remoteItem;
-                        remoteItem.DataDiskSize = repository.GetDataDiskSize(((SystemCore)_system).RootUser);
-                        repository.RefreshStatsFromCache();
-                        lock (_repositoryList)
+                        try
                         {
-                            _repositoryList.Add(repositoryDef.ID, remoteItem);
+                            var repositoryDef = new RepositorySchema();
+                            repositoryDef.Load(file);
+                            repositoryDef.CachePath = Path.Combine(ConfigHelper.DataPath, repositoryDef.ID.ToString());
+                            var repository = new Celeriq.RepositoryAPI.Repository(0, repositoryDef, ConfigHelper.MasterKeys, _system);
+                            var remoteItem = new RemotingObjectCache() { ServiceInstance = repository, Repository = repositoryDef };
+                            remoteItem.VersionHash = repositoryDef.VersionHash;
+                            repository.RemotingObject = remoteItem;
+                            remoteItem.DataDiskSize = repository.GetDataDiskSize(((SystemCore)_system).RootUser);
+                            repository.RefreshStatsFromCache();
+                            lock (_repositoryList)
+                            {
+                                if (_repositoryList.ContainsKey(repositoryDef.ID))
+                                    Logger.LogWarning("OnLoad Duplicate: ID=" + repositoryDef.ID);
+                                else
+                                    _repositoryList.Add(repositoryDef.ID, remoteItem);
+                            }
+                            if (_repositoryList.Count % 500 == 0)
+                            {
+                                Logger.LogInfo("Manager load files (" + _repositoryList.Count + " / " + files.Length + ")");
+                            }
                         }
-                        if (_repositoryList.Count % 500 == 0)
+                        catch (Exception ex)
                         {
-                            Logger.LogInfo("Manager load files (" + _repositoryList.Count + " / " + files.Length + ")");
+                            Logger.LogError(ex, "File: " + file);
                         }
                     });
 
@@ -367,7 +377,7 @@ namespace Celeriq.Server.Core
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
                 {
-                    Logger.LogInfo("Repository not found: " + repositoryId);
+                    Logger.LogInfo("Repository not found: ID=" + repositoryId + ", Method=UpdateData");
                     errorList.Add("The repository has not been initialized! ID: " + repositoryId);
                 }
                 else
@@ -390,7 +400,7 @@ namespace Celeriq.Server.Core
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
                 {
-                    Logger.LogInfo("Repository not found: " + repositoryId);
+                    Logger.LogInfo("Repository not found: ID=" + repositoryId + ", Method=DeleteData");
                     errorList.Add("The repository has not been initialized! ID: " + repositoryId);
                 }
                 else
@@ -413,7 +423,7 @@ namespace Celeriq.Server.Core
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
                 {
-                    Logger.LogInfo("Repository not found: " + repositoryId);
+                    Logger.LogInfo("Repository not found: ID=" + repositoryId + ", Method=Clear");
                     errorList.Add("The repository has not been initialized! ID: " + repositoryId);
                 }
                 else
@@ -438,7 +448,7 @@ namespace Celeriq.Server.Core
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
                 {
-                    Logger.LogInfo("Repository not found: " + repositoryId);
+                    Logger.LogInfo("Repository not found: ID=" + repositoryId + ", Method=Query");
                     retval.ErrorList = new string[] { "The repository has not been initialized! ID: " + repositoryId };
                 }
                 else
@@ -462,7 +472,7 @@ namespace Celeriq.Server.Core
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
                 {
-                    Logger.LogInfo("Repository not found: " + repositoryId);
+                    Logger.LogInfo("Repository not found: ID=" + repositoryId + ", Method=ShutDown");
                     throw new Exception("The repository has not been initialized! ID: " + repositoryId);
                 }
 
@@ -676,7 +686,7 @@ namespace Celeriq.Server.Core
                 List<RemotingObjectCache> tempList = null;
                 do
                 {
-                    using (var q = new AcquireWriterLock(this.SyncObject, "FlushCache"))
+                    using (var q = new AcquireWriterLock(this.SyncObject, "FlushCache Manager"))
                     {
                         //var t2 = new Stopwatch();
                         //t2.Start();

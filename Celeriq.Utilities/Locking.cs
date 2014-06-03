@@ -17,16 +17,16 @@ namespace Celeriq.Utilities
             m_Lock = rwl;
             if (!m_Lock.TryEnterReadLock(TimeOut))
             {
-                throw new Exception("Could not get reader lock. " +
-                    "ThreadID: " + rwl.ID +
-                    ((rwl.ObjectId == Guid.Empty) ? string.Empty : ", ObjectID: " + rwl.ObjectId) +
-                    ", CurrentReadCount: " + m_Lock.CurrentReadCount +
-                    ", WaitingReadCount: " + m_Lock.WaitingReadCount + 
-                    ", WaitingWriteCount: " + m_Lock.WaitingWriteCount +
-                    ", IsWriteLockHeld: " + m_Lock.IsWriteLockHeld +
-                    ", HoldingThread: " + m_Lock.HoldingThreadId +
-                    ", TraceInfo: " + m_Lock.TraceInfo +
-                    ", WriteHeldTime: " + m_Lock.WriteHeldTime);
+                throw new Exception("Could not get reader lock: " +
+                    "LockID=" + rwl.LockID +
+                    ((rwl.ObjectId == Guid.Empty) ? string.Empty : ", ObjectID=" + rwl.ObjectId) +
+                    ", CurrentReadCount=" + m_Lock.CurrentReadCount +
+                    ", WaitingReadCount=" + m_Lock.WaitingReadCount + 
+                    ", WaitingWriteCount=" + m_Lock.WaitingWriteCount +
+                    ", IsWriteLockHeld=" + m_Lock.IsWriteLockHeld +
+                    ", HoldingThread=" + m_Lock.HoldingThreadId +
+                    ", TraceInfo=" + m_Lock.TraceInfo +
+                    ", WriteHeldTime=" + m_Lock.WriteHeldTime);
             }
         }
 
@@ -60,22 +60,30 @@ namespace Celeriq.Utilities
 
         /// <summary />
         public AcquireWriterLock(CeleriqLock rwl, string traceInfo)
+            : this(rwl, traceInfo, Guid.Empty)
+        {
+        }
+
+        /// <summary />
+        public AcquireWriterLock(CeleriqLock rwl, string traceInfo, Guid callerObject)
         {
             m_Lock = rwl;
             if (!m_Lock.TryEnterWriteLock(TimeOut))
             {
                 _inError = true;
-                throw new Exception("Could not get writer lock. " +
-                    "ThreadID: " + rwl.ID +
-                    ((rwl.ObjectId == Guid.Empty) ? string.Empty : ", ObjectID: " + rwl.ObjectId) + 
-                    ", CurrentReadCount: " + m_Lock.CurrentReadCount +
-                    ", WaitingReadCount: " + m_Lock.WaitingReadCount + 
-                    ", WaitingWriteCount: " + m_Lock.WaitingWriteCount +
-                    ", IsWriteLockHeld: " + m_Lock.IsWriteLockHeld +
-                    ", HoldingThread: " + m_Lock.HoldingThreadId +
-                    ", TraceInfo: " + m_Lock.TraceInfo +
-                    ", WriteHeldTime: " + m_Lock.WriteHeldTime);
+                throw new Exception("Could not get writer lock: " +
+                    "LockID=" + rwl.LockID +
+                    ((rwl.ObjectId == Guid.Empty) ? string.Empty : ", ObjectID=" + rwl.ObjectId) +
+                    (callerObject == Guid.Empty ? string.Empty : ", CallerID=" + callerObject) +
+                    ", CurrentReadCount=" + m_Lock.CurrentReadCount +
+                    ", WaitingReadCount=" + m_Lock.WaitingReadCount + 
+                    ", WaitingWriteCount=" + m_Lock.WaitingWriteCount +
+                    ", IsWriteLockHeld=" + m_Lock.IsWriteLockHeld +
+                    ", HoldingThread=" + m_Lock.HoldingThreadId +
+                    ", TraceInfo=" + m_Lock.TraceInfo +
+                    ", WriteHeldTime=" + m_Lock.WriteHeldTime);
             }
+
             rwl.TraceInfo = traceInfo;
             rwl.WriteLockHeldTime = DateTime.Now;
             rwl.HoldingThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
@@ -109,7 +117,7 @@ namespace Celeriq.Utilities
         public CeleriqLock(LockRecursionPolicy recursionPolicy, Guid objectId)
             : base(recursionPolicy)
         {
-            this.ID = Guid.NewGuid();
+            this.LockID = Guid.NewGuid();
             this.ObjectId = objectId;
         }
 
@@ -136,7 +144,7 @@ namespace Celeriq.Utilities
 
         public DateTime? WriteLockHeldTime { get; internal set; }
         public string TraceInfo { get; internal set; }
-        public Guid ID { get; private set; }
+        public Guid LockID { get; private set; }
         public Guid ObjectId { get; private set; }
         public int? HoldingThreadId { get; internal set; }
     }

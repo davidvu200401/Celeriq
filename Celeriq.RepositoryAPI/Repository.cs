@@ -169,7 +169,7 @@ namespace Celeriq.RepositoryAPI
 
         public void UnloadData()
         {
-            using (var q = new AcquireWriterLock(this.SyncObject, "UnloadData"))
+            using (var q = new AcquireWriterLock(this.SyncObject, "UnloadData", _repositoryDefinition.ID))
             {
                 try
                 {
@@ -240,7 +240,7 @@ namespace Celeriq.RepositoryAPI
             if (!IsValidCredentials(credentials))
                 throw new Exception("Invalid credentials");
 
-            using (var q = new AcquireWriterLock(this.SyncObject, "LoadData"))
+            using (var q = new AcquireWriterLock(this.SyncObject, "LoadData", _repositoryDefinition.ID))
             {
                 try
                 {
@@ -264,7 +264,7 @@ namespace Celeriq.RepositoryAPI
             if (!IsValidCredentials(credentials))
                 throw new Exception("Invalid credentials");
 
-            using (var q = new AcquireWriterLock(this.SyncObject, "UpdateIndexList"))
+            using (var q = new AcquireWriterLock(this.SyncObject, "UpdateIndexList", _repositoryDefinition.ID))
             {
                 try
                 {
@@ -382,7 +382,7 @@ namespace Celeriq.RepositoryAPI
                     this.FlushCache();
 
                     timer.Stop();
-                    Logger.LogInfo("UpdateIndexList: ID=" + _repositoryDefinition.ID + ", Count=" + count + ", Elapsed=" + timer.Elapsed + ", Avg=" + ((count == 0) ? "0.0" : ((timer.Elapsed * 1.0) / count).ToString("###,##0.0")));
+                    Logger.LogInfo("UpdateIndexList: ID=" + _repositoryDefinition.ID + ", TotalCount=" + _list.Count + ", Count=" + count + ", Elapsed=" + timer.Elapsed + ", Avg=" + ((count == 0) ? "0.0" : ((timer.Elapsed * 1.0) / count).ToString("###,##0.0")));
                     _system.LogRepositoryPerf(new RepositorySummmaryStats
                                               {
                                                   ActionType = RepositoryActionConstants.SaveData,
@@ -425,7 +425,7 @@ namespace Celeriq.RepositoryAPI
             if (!IsValidCredentials(credentials))
                 throw new Exception("Invalid credentials");
 
-            using (var q = new AcquireWriterLock(this.SyncObject, "DeleteData"))
+            using (var q = new AcquireWriterLock(this.SyncObject, "DeleteData", _repositoryDefinition.ID))
             {
                 try
                 {
@@ -488,7 +488,7 @@ namespace Celeriq.RepositoryAPI
 
             if (!this.IsLoaded)
             {
-                using (var q = new AcquireWriterLock(this.SyncObject, "Query"))
+                using (var q = new AcquireWriterLock(this.SyncObject, "Query", _repositoryDefinition.ID))
                 {
                     try
                     {
@@ -1165,7 +1165,7 @@ namespace Celeriq.RepositoryAPI
             if (!IsValidCredentials(credentials))
                 throw new Exception("Invalid credentials");
 
-            using (var q = new AcquireWriterLock(this.SyncObject, "Clear"))
+            using (var q = new AcquireWriterLock(this.SyncObject, "Clear", _repositoryDefinition.ID))
             {
                 try
                 {
@@ -1194,7 +1194,7 @@ namespace Celeriq.RepositoryAPI
             if (!IsValidCredentials(credentials))
                 throw new Exception("Invalid credentials");
 
-            using (var q = new AcquireWriterLock(this.SyncObject, "ExportSchema"))
+            using (var q = new AcquireWriterLock(this.SyncObject, "ExportSchema", _repositoryDefinition.ID))
             {
                 try
                 {
@@ -1215,7 +1215,7 @@ namespace Celeriq.RepositoryAPI
             if (!IsValidCredentials(credentials))
                 throw new Exception("Invalid credentials");
 
-            using (var q = new AcquireWriterLock(this.SyncObject, "Backup"))
+            using (var q = new AcquireWriterLock(this.SyncObject, "Backup", _repositoryDefinition.ID))
             {
                 try
                 {
@@ -1237,7 +1237,7 @@ namespace Celeriq.RepositoryAPI
             if (!IsValidCredentials(credentials))
                 throw new Exception("Invalid credentials");
 
-            using (var q = new AcquireWriterLock(this.SyncObject, "Restore"))
+            using (var q = new AcquireWriterLock(this.SyncObject, "Restore", _repositoryDefinition.ID))
             {
                 try
                 {
@@ -1281,7 +1281,7 @@ namespace Celeriq.RepositoryAPI
 
         public void ShutDown()
         {
-            using (var q = new AcquireWriterLock(this.SyncObject, "Shutdown"))
+            using (var q = new AcquireWriterLock(this.SyncObject, "Shutdown", _repositoryDefinition.ID))
             {
                 try
                 {
@@ -1441,7 +1441,7 @@ namespace Celeriq.RepositoryAPI
         {
             try
             {
-                using (var q = new AcquireWriterLock(this.SyncObject, "Compress"))
+                using (var q = new AcquireWriterLock(this.SyncObject, "Compress", _repositoryDefinition.ID))
                 {
                     if (_dataProvider.NeedsCompress)
                     {
@@ -1473,15 +1473,15 @@ namespace Celeriq.RepositoryAPI
                 {
                     var timer = new Stopwatch();
                     timer.Start();
-                    using (var q = new AcquireWriterLock(this.SyncObject, "FlushCache"))
+                    using (var q = new AcquireWriterLock(this.SyncObject, "FlushCache", _repositoryDefinition.ID))
                     {
                         this.RemotingObject.ItemCount = _list.Count;
                         if (useMemory)
                         {
-                            if (_list.Count > 10000) //For big repositories we do not want max out memory so buffer to disk
-                                this.RemotingObject.DataMemorySize = ObjectHelper.SizeOf(_list, true);
-                            else
-                                this.RemotingObject.DataMemorySize = ObjectHelper.SizeOf(_list);
+                            //if (_list.Count > 10000) //For big repositories we do not want max out memory so buffer to disk
+                            //    this.RemotingObject.DataMemorySize = ObjectHelper.SizeOf(_list, true);
+                            //else
+                            //    this.RemotingObject.DataMemorySize = ObjectHelper.SizeOf(_list);
                         }
 
                         _dataProvider.UpdateRepositoryStats(new RepositoryStatItem

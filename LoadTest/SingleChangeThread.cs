@@ -36,36 +36,48 @@ namespace LoadTest
 
                 while (!this.Cancel)
                 {
-                    List<BaseRemotingObject> list = null;
-                    while (list == null)
+                    if (_data.PredefinedLoad.Count == 0)
                     {
-                        try
+                        List<BaseRemotingObject> list = null;
+                        while (list == null)
                         {
-                            using (var factory = SystemCoreInteractDomain.GetFactory(this.Server))
+                            try
                             {
-                                var server = factory.CreateChannel();
-                                var paging = new PagingInfo { PageOffset = 1, RecordsPerPage = 10 };
-                                if (_maxPageCount > 0) paging = new PagingInfo { PageOffset = _rnd.Next(1, _maxPageCount), RecordsPerPage = 10 };
+                                using (var factory = SystemCoreInteractDomain.GetFactory(this.Server))
+                                {
+                                    var server = factory.CreateChannel();
+                                    var paging = new PagingInfo { PageOffset = 1, RecordsPerPage = 10 };
+                                    if (_maxPageCount > 0) paging = new PagingInfo { PageOffset = _rnd.Next(1, _maxPageCount), RecordsPerPage = 10 };
 
-                                //Try to load list and if the service is not loaded yet and get error then wait and try again.
-                                list = server.GetRepositoryPropertyList(_credentials, paging);
-                                var count = server.GetRepositoryCount(_credentials, paging);
-                                _maxPageCount = (count / paging.RecordsPerPage) + (count / paging.RecordsPerPage == 0 ? 0 : 1);
+                                    //Try to load list and if the service is not loaded yet and get error then wait and try again.
+                                    list = server.GetRepositoryPropertyList(_credentials, paging);
+                                    var count = server.GetRepositoryCount(_credentials, paging);
+                                    _maxPageCount = (count / paging.RecordsPerPage) + (count / paging.RecordsPerPage == 0 ? 0 : 1);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                list = null;
+                                System.Threading.Thread.Sleep(5000);
                             }
                         }
-                        catch (Exception ex)
+
+                        if (list != null)
                         {
-                            list = null;
-                            System.Threading.Thread.Sleep(5000);
+                            var options = new ParallelOptions { MaxDegreeOfParallelism = _threadCount };
+                            Parallel.For(0, list.Count, ii =>
+                            {
+                                Upsert(list[ii].Repository.ID.ToString());
+                            });
+                            System.Threading.Thread.Sleep(4000);
                         }
                     }
-
-                    if (list != null)
+                    else //Predefined list
                     {
                         var options = new ParallelOptions { MaxDegreeOfParallelism = _threadCount };
-                        Parallel.For(0, list.Count, ii =>
+                        Parallel.For(0, _data.PredefinedLoad.Count, ii =>
                         {
-                            Upsert(list[ii].Repository.ID.ToString());
+                            Upsert(_data.PredefinedLoad[ii].ToString());
                         });
                         System.Threading.Thread.Sleep(4000);
                     }

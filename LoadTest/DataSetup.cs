@@ -11,12 +11,15 @@ namespace LoadTest
         public string[] Dim2Array = { "ZZZ", "XXX", "YYY", "WWW" };
         public List<string> Dim3Array = new List<string>();
         public List<string> Dim4Array = new List<string>();
+        public List<Guid> PredefinedLoad { get; private set; }
 
         private Random _rnd = new Random();
         private const string _chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         public DataSetup()
         {
+            this.PredefinedLoad = new List<Guid>();
+
             #region Setup
             for (var ii = 0; ii < 10; ii++)
             {

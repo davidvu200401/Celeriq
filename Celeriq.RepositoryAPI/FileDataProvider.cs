@@ -267,7 +267,7 @@ namespace Celeriq.RepositoryAPI
             }
             catch (Exception ex)
             {
-                Logger.LogError("ReloadMeFromDisk: " + ex.ToString());
+                Logger.LogError("Load: " + ex.ToString());
                 throw;
             }
         }

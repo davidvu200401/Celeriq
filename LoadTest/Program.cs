@@ -85,6 +85,24 @@ namespace LoadTest
                 }
             }
 
+            //Load File
+            {
+                const string loadFilePrompt = "/loadfile:";
+                var v = args.FirstOrDefault(x => x.StartsWith(loadFilePrompt));
+                if (!string.IsNullOrEmpty(v))
+                {
+                    v = v.Substring(loadFilePrompt.Length, v.Length - loadFilePrompt.Length);
+                    if (File.Exists(v))
+                    {
+                        var g = File.ReadAllLines(v);
+                        foreach (var s in g)
+                        {
+                            _data.PredefinedLoad.Add(new Guid(s));
+                        }
+                    }
+                }
+            }
+
             if (string.IsNullOrEmpty(server))
             {
                 Console.WriteLine("Invalid server.");
