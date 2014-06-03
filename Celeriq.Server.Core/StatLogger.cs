@@ -185,7 +185,8 @@ namespace Celeriq.Server.Core
                               item.ProcessorUsage +
                               ")";
                     RunScript(sql);
-                    Logger.LogInfo("StatLogger Log: MemoryUsageProcess=" + item.MemoryUsageProcess.ToString("###,###,###,##0") + ", RepositoryInMem=" + item.RepositoryInMem.ToString("###,###,###,##0") + ", RepositoryTotal=" + item.RepositoryTotal.ToString("###,###,###,##0") + ", ProcessorUsage=" + item.ProcessorUsage);
+
+                    Logger.LogInfo("StatLogger Log: MemoryUsageProcess=" + item.MemoryUsageProcess.ToString("###,###,###,##0") + ", RepositoryInMem=" + item.RepositoryInMem.ToString("###,###,###,##0") + ", RepositoryTotal=" + item.RepositoryTotal.ToString("###,###,###,##0") + ", ProcessorUsage=" + item.ProcessorUsage + ", DiskSpeed=" + item.DiskAccessSpeed);
                     #endregion
                 }
             }

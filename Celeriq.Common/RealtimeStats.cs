@@ -51,5 +51,9 @@ namespace Celeriq.Common
         [XmlElement]
         [DataMember]
         public int ProcessorUsage { get; set; }
+
+        [XmlElement]
+        [DataMember]
+        public int DiskAccessSpeed { get; set; }
     }
 }

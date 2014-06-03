@@ -1125,7 +1125,7 @@ namespace Celeriq.RepositoryAPI
                     var elapsed = timer.Stop();
                     newResults.ComputeTime = elapsed;
                     AddProfileItem(RepositoryActionConstants.Query, timer, query.ToString(), newResults.TotalRecordCount);
-                    Logger.LogInfo("Query: ID=" + _repositoryDefinition.ID + ", Count=" + newResults.TotalRecordCount + ", Elapsed=" + timer.Elapsed);
+                    Logger.LogInfo("Query: ID=" + _repositoryDefinition.ID + ", TotalCount=" + _list.Count + ", Count=" + newResults.TotalRecordCount + ", Elapsed=" + timer.Elapsed);
                     _system.LogRepositoryPerf(new RepositorySummmaryStats
                     {
                         ActionType = RepositoryActionConstants.Query,

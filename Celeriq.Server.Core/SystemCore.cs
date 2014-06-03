@@ -363,7 +363,9 @@ namespace Celeriq.Server.Core
 
                 #endregion
 
-                #region Write stat
+                var diskSpeed = FileHelper.GetDiskAccessSpeed();
+
+                #region Write stats
                 using (var q = new AcquireWriterLock(this.StatLocker, "_timerStats_Elapsed"))
                 {
                     var newItem = new RealtimeStats
@@ -379,6 +381,7 @@ namespace Celeriq.Server.Core
                                    RepositoryTotal = _manager.List.Count,
                                    RepositoryCreateDelta = _createdDelta,
                                    RepositoryDeleteDelta = _deletedDelta,
+                                   DiskAccessSpeed = diskSpeed,
                                };
 
                     //Log to database once per minute

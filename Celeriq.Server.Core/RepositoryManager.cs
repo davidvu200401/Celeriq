@@ -214,6 +214,7 @@ namespace Celeriq.Server.Core
 
                     if (_storage == StorageTypeConstants.Database)
                     {
+                        #region Database
                         using (var context = new Celeriq.DataCore.EFDAL.DataCoreEntities())
                         {
                             var item = context.RepositoryDefinition.FirstOrDefault(x => x.UniqueKey == repositoryId);
@@ -255,9 +256,11 @@ namespace Celeriq.Server.Core
                             repository.RemotingObject = remoteItem;
                             _repositoryList.Add(repositoryId, remoteItem);
                         }
+                        #endregion
                     }
                     else if (_storage == StorageTypeConstants.File)
                     {
+                        #region File
                         RemotingObjectCache remoteItem = null;
                         var repository = new Celeriq.RepositoryAPI.Repository(0, schema, ConfigHelper.MasterKeys, _system);
                         if (_repositoryList.ContainsKey(repositoryId))
@@ -293,6 +296,7 @@ namespace Celeriq.Server.Core
 
                         repository.RemotingObject = remoteItem;
                         _repositoryList.Add(repositoryId, remoteItem);
+                        #endregion
                     }
                 }
 

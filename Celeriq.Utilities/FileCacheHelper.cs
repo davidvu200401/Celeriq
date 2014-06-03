@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Diagnostics;
 
 namespace Celeriq.Utilities
 {
