@@ -174,7 +174,10 @@ namespace Celeriq.RepositoryAPI
                 try
                 {
                     if (!this.IsLoaded) return;
-                    var timer = new CQTimer();
+                    var cqTimer = new CQTimer();
+
+                    var timer = new Stopwatch();
+                    timer.Start();
 
                     //Ensure all is saved
                     if (_dataProvider.MemoryDirty)
@@ -210,18 +213,20 @@ namespace Celeriq.RepositoryAPI
                     _dataProvider.LastAccess = DateTime.MinValue;
                     this.IsLoaded = false;
 
-                    AddProfileItem(RepositoryActionConstants.UnloadData, timer, count);
-                    Logger.LogInfo("Repository UnloadData: ID=" + _repositoryDefinition.ID);
+                    AddProfileItem(RepositoryActionConstants.UnloadData, cqTimer, count);
 
                     _system.LogRepositoryPerf(new RepositorySummmaryStats
                     {
                         ActionType = RepositoryActionConstants.UnloadData,
                         RepositoryId = _repositoryDefinition.ID,
-                        Elapsed = timer.Elapsed,
+                        Elapsed = cqTimer.Elapsed,
                         ItemCount = count,
                     });
 
-                    _system.NotifyUnload(_repositoryDefinition.ID, timer.Elapsed, count);
+                    _system.NotifyUnload(_repositoryDefinition.ID, cqTimer.Elapsed, count);
+
+                    timer.Stop();
+                    Logger.LogInfo("Repository UnloadData: ID=" + _repositoryDefinition.ID + ", Elapsed=" + timer.ElapsedMilliseconds);
                 }
                 catch (Exception ex)
                 {
@@ -1471,8 +1476,10 @@ namespace Celeriq.RepositoryAPI
             {
                 if (_needStatUpdate)
                 {
+                    Logger.LogDebug("FlushCache Starting: ID=" + _repositoryDefinition.ID);
                     var timer = new Stopwatch();
                     timer.Start();
+
                     using (var q = new AcquireWriterLock(this.SyncObject, "FlushCache", _repositoryDefinition.ID))
                     {
                         this.RemotingObject.ItemCount = _list.Count;
@@ -1491,8 +1498,9 @@ namespace Celeriq.RepositoryAPI
                         });
                         _needStatUpdate = !useMemory;
                     }
+                    
                     timer.Stop();
-                    Logger.LogInfo("FlushCache: Mem=" + useMemory + ", ID=" + _repositoryDefinition.ID.ToString() + ", Count=" + this.RemotingObject.ItemCount + ", Elapsed=" + timer.ElapsedMilliseconds);
+                    Logger.LogInfo("FlushCache: Mem=" + useMemory + ", ID=" + _repositoryDefinition.ID + ", Count=" + this.RemotingObject.ItemCount + ", Elapsed=" + timer.ElapsedMilliseconds);
                 }
             }
             catch (Exception ex)

@@ -191,7 +191,7 @@ namespace Celeriq.RepositoryAPI
                         index++;
                     }
                     timer2.Stop();
-                    Logger.LogInfo("InitializeDimension All: Elapsed=" + timer2.ElapsedMilliseconds);
+                    Logger.LogInfo("InitializeDimension All: Elapsed=" + timer2.ElapsedMilliseconds + ", Count=" + _list.Count);
 
                     //Load dimension/item mapping cache
                     foreach (var d in dimensionList)

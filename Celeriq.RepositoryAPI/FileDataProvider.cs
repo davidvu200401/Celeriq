@@ -112,6 +112,9 @@ namespace Celeriq.RepositoryAPI
         {
             try
             {
+                var timer = new Stopwatch();
+                timer.Start();
+
                 var newCache = new FileCacheHelper<DataItem>();
                 var index = 0;
                 while (index < _list.Count)
@@ -133,7 +136,8 @@ namespace Celeriq.RepositoryAPI
                 if (File.Exists(_deletedCache.CacheFileName))
                     File.Delete(_deletedCache.CacheFileName);
 
-                Logger.LogInfo("Repository SaveData: ID=" + _repositoryDefinition.ID.ToString());
+                timer.Stop();
+                Logger.LogInfo("Repository SaveData: ID=" + _repositoryDefinition.ID.ToString() + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -193,7 +197,7 @@ namespace Celeriq.RepositoryAPI
                     index++;
                 }
                 timer2.Stop();
-                Logger.LogInfo("InitializeDimension All: Elapsed=" + timer2.ElapsedMilliseconds);
+                Logger.LogInfo("InitializeDimension All: Elapsed=" + timer2.ElapsedMilliseconds + ", Count=" + _list.Count);
 
                 //The data files
                 _repositoryFile = Path.Combine(repositoryCacheFolder, "repository.data");

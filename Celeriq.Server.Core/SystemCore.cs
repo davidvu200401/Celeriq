@@ -533,10 +533,13 @@ namespace Celeriq.Server.Core
                 //collect garbage to free memory (do not do too often. Like > N minutes)
                 if (wasUnloaded && DateTime.Now.Subtract(_lastGarbageCollection).TotalMinutes >= HouseKeepingInterval)
                 {
+                    var timer = new Stopwatch();
+                    timer.Start();
                     var before = GC.GetTotalMemory(false);
                     GC.Collect();
                     var after = GC.GetTotalMemory(true);
-                    Logger.LogInfo(string.Format("Garbage Collection: {0:N0} / {1:N0}", before, after));
+                    timer.Stop();
+                    Logger.LogInfo(string.Format("Garbage Collection: Before={0:N0}, After={1:N0}, Elapsed=" + timer.ElapsedMilliseconds, before, after));
                     _lastGarbageCollection = DateTime.Now;
                 }
 

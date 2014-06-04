@@ -129,10 +129,12 @@ namespace Celeriq.Server.Core
 
         public void RemoveRepository(Guid repositoryId)
         {
-            var timer = new Stopwatch();
-            timer.Start();
             try
             {
+                Logger.LogDebug("Manager.RemoveRepository Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 //Delete from list in case error
                 using (var q = new AcquireWriterLock(this.SyncObject, "RemoveRepository"))
                 {
@@ -159,24 +161,39 @@ namespace Celeriq.Server.Core
                     var folderPath = Path.Combine(ConfigHelper.DataPath, repositoryId.ToString());
                     ServerUtilities.DeleteDirectoryWithRetry(folderPath);
                 }
+
+                timer.Stop();
+                Logger.LogInfo("Manager.RemoveRepository: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, "RepositoryId: " + repositoryId);
                 throw;
             }
-            finally
-            {
-                timer.Stop();
-                Logger.LogInfo("RemoveRepository: Elapsed=" + timer.ElapsedMilliseconds);
-            }
         }
 
         public bool Contains(Guid repositoryId)
         {
-            using (var q = new AcquireReaderLock(this.SyncObject))
+            try
             {
-                return _repositoryList.ContainsKey(repositoryId);
+                Logger.LogDebug("Manager.Contains Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
+                var retval = false;
+                using (var q = new AcquireReaderLock(this.SyncObject))
+                {
+                    retval = _repositoryList.ContainsKey(repositoryId);
+                }
+
+                timer.Stop();
+                Logger.LogInfo("Manager.Contains: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
+                return retval;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex);
+                throw;
             }
         }
 
@@ -201,10 +218,12 @@ namespace Celeriq.Server.Core
 
         public Celeriq.Server.Interfaces.IRepository AddRepository(Guid repositoryId, RepositorySchema schema)
         {
-            var timer = new Stopwatch();
-            timer.Start();
             try
             {
+                Logger.LogDebug("Manager.AddRepository Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 using (var q = new AcquireWriterLock(this.SyncObject, "AddRepository"))
                 {
                     if (_repositoryList.ContainsKey(repositoryId))
@@ -300,6 +319,7 @@ namespace Celeriq.Server.Core
                     }
                 }
 
+                #region Load
                 using (var q = new AcquireReaderLock(this.SyncObject))
                 {
                     if (ConfigHelper.AutoLoad)
@@ -315,17 +335,15 @@ namespace Celeriq.Server.Core
                     }
                     return null;
                 }
+                #endregion
 
+                timer.Stop();
+                Logger.LogInfo("Manager.AddRepository: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, "RepositoryId: " + repositoryId);
                 throw;
-            }
-            finally
-            {
-                timer.Stop();
-                Logger.LogInfo("AddRepository: Elapsed=" + timer.ElapsedMilliseconds);
             }
         }
 
@@ -348,9 +366,16 @@ namespace Celeriq.Server.Core
         {
             try
             {
+                Logger.LogDebug("Manager.UnloadData Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+                
                 //EnsureRepositoryLoaded(repositoryId);
                 var repository = GetRepository(repositoryId);
                 repository.ServiceInstance.UnloadData();
+
+                timer.Stop();
+                Logger.LogInfo("Manager.UnloadData: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -362,9 +387,16 @@ namespace Celeriq.Server.Core
         {
             try
             {
+                Logger.LogDebug("Manager.LoadData Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 //EnsureRepositoryLoaded(repositoryId);
                 var repository = GetRepository(repositoryId);
                 repository.ServiceInstance.Query(new DataQuery() { Credentials = credentials });
+
+                timer.Stop();
+                Logger.LogInfo("Manager.LoadData: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -377,6 +409,10 @@ namespace Celeriq.Server.Core
             var errorList = new List<string>();
             try
             {
+                Logger.LogDebug("Manager.UpdateData Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 //EnsureRepositoryLoaded(repositoryId);
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
@@ -386,6 +422,9 @@ namespace Celeriq.Server.Core
                 }
                 else
                     repository.ServiceInstance.UpdateIndexList(list, credentials);
+
+                timer.Stop();
+                Logger.LogInfo("Manager.UpdateData: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -400,6 +439,10 @@ namespace Celeriq.Server.Core
             var errorList = new List<string>();
             try
             {
+                Logger.LogDebug("Manager.DeleteData Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 //EnsureRepositoryLoaded(repositoryId);
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
@@ -409,6 +452,9 @@ namespace Celeriq.Server.Core
                 }
                 else
                     repository.ServiceInstance.DeleteData(item, credentials);
+
+                timer.Stop();
+                Logger.LogInfo("Manager.DeleteData: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -423,6 +469,10 @@ namespace Celeriq.Server.Core
             var errorList = new List<string>();
             try
             {
+                Logger.LogDebug("Manager.Clear Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 //EnsureRepositoryLoaded(repositoryId);
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
@@ -434,6 +484,9 @@ namespace Celeriq.Server.Core
                 {
                     repository.ServiceInstance.Clear(credentials);
                 }
+                
+                timer.Stop();
+                Logger.LogInfo("Manager.Clear: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -448,6 +501,10 @@ namespace Celeriq.Server.Core
             var retval = new DataQueryResults();
             try
             {
+                Logger.LogDebug("Manager.Query Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 //EnsureRepositoryLoaded(repositoryId);
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
@@ -459,6 +516,9 @@ namespace Celeriq.Server.Core
                 {
                     retval = repository.ServiceInstance.Query(query);
                 }
+
+                timer.Stop();
+                Logger.LogInfo("Manager.Query: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -472,6 +532,10 @@ namespace Celeriq.Server.Core
         {
             try
             {
+                Logger.LogDebug("Manager.ShutDown Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 //EnsureRepositoryLoaded(repositoryId);
                 var repository = GetRepository(repositoryId);
                 if (repository == null)
@@ -483,6 +547,8 @@ namespace Celeriq.Server.Core
                 repository.ServiceInstance.ShutDown();
                 repository = null;
 
+                timer.Stop();
+                Logger.LogInfo("Manager.ShutDown: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -531,9 +597,17 @@ namespace Celeriq.Server.Core
         {
             try
             {
+                Logger.LogDebug("Manager.Restore Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 //EnsureRepositoryLoaded(repositoryId);
                 var repository = GetRepository(repositoryId);
-                return repository.ServiceInstance.Restore(credentials, backupFile);
+                var retval = repository.ServiceInstance.Restore(credentials, backupFile);
+
+                timer.Stop();
+                Logger.LogInfo("Manager.Restore: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
+                return retval;
             }
             catch (Exception ex)
             {
@@ -590,9 +664,17 @@ namespace Celeriq.Server.Core
         {
             try
             {
+                Logger.LogDebug("Manager.GetItemCount Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
                 var repository = GetRepository(repositoryId);
                 if (repository == null) return 0;
-                return repository.ServiceInstance.GetItemCount(credentials);
+                var count = repository.ServiceInstance.GetItemCount(credentials);
+                
+                timer.Stop();
+                Logger.LogInfo("Manager.GetItemCount: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
+                return count;
             }
             catch (Exception ex)
             {
@@ -623,12 +705,18 @@ namespace Celeriq.Server.Core
         {
             try
             {
+                Logger.LogDebug("Manager.IsLoaded Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
+                var retval = false;
                 //EnsureRepositoryLoaded(repositoryId);
                 var repository = GetRepository(repositoryId);
-                if (repository == null)
-                    return false;
-                else
-                    return repository.IsLoaded;
+                if (repository != null) retval = repository.IsLoaded;
+
+                timer.Stop();
+                Logger.LogInfo("Manager.IsLoaded: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
+                return retval;
             }
             catch (Exception ex)
             {
@@ -653,24 +741,22 @@ namespace Celeriq.Server.Core
 
         private RemotingObjectCache GetRepository(Guid repositoryId)
         {
-            using (var q = new AcquireReaderLock(this.SyncObject))
-            {
-                if (!_repositoryList.ContainsKey(repositoryId)) return null;
-                return _repositoryList[repositoryId];
-            }
-        }
-
-        public bool IsValidFormat(Guid repositoryId, DataItem item, UserCredentials credentials)
-        {
             try
             {
-                var repository = GetRepository(repositoryId);
-                if (repository != null)
+                //Logger.LogDebug("Manager.GetRepository Starting: ID=" + repositoryId);
+                //var timer = new Stopwatch();
+                //timer.Start();
+
+                RemotingObjectCache retval = null;
+                using (var q = new AcquireReaderLock(this.SyncObject))
                 {
-                    var r = repository.ServiceInstance as Celeriq.RepositoryAPI.Repository;
-                    return r.IsValidFormat(item, credentials);
+                    if (_repositoryList.ContainsKey(repositoryId))
+                        retval = _repositoryList[repositoryId];
                 }
-                return false;
+
+                //timer.Stop();
+                //Logger.LogInfo("Manager.GetRepository: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
+                return retval;
             }
             catch (Exception ex)
             {
@@ -679,12 +765,41 @@ namespace Celeriq.Server.Core
             }
         }
 
-        public void FlushCache()
+        public bool IsValidFormat(Guid repositoryId, DataItem item, UserCredentials credentials)
         {
-            var timer = new Stopwatch();
-            timer.Start();
             try
             {
+                Logger.LogDebug("Manager.IsValidFormat Starting: ID=" + repositoryId);
+                var timer = new Stopwatch();
+                timer.Start();
+
+                var retval = false;
+                var repository = GetRepository(repositoryId);
+                if (repository != null)
+                {
+                    var r = repository.ServiceInstance as Celeriq.RepositoryAPI.Repository;
+                    retval = r.IsValidFormat(item, credentials);
+                }
+
+                timer.Stop();
+                Logger.LogInfo("Manager.IsValidFormat: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
+                return retval;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "IsValidFormat: RepositoryId=" + repositoryId);
+                throw;
+            }
+        }
+
+        public void FlushCache()
+        {
+            try
+            {
+                Logger.LogDebug("Manager.FlushCache Starting");
+                var timer = new Stopwatch();
+                timer.Start();
+
                 var page = 0;
                 var rpp = 10;
                 List<RemotingObjectCache> tempList = null;
@@ -708,15 +823,13 @@ namespace Celeriq.Server.Core
                     //Get next page...loop until run out of items
                     page++;
                 } while (tempList.Count > 0);
+
+                timer.Stop();
+                Logger.LogInfo("Manager.FlushCache: Elapsed=" + timer.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
                 Logger.LogWarning(ex.Message);
-            }
-            finally
-            {
-                timer.Stop();
-                var q = timer.ElapsedMilliseconds;
             }
         }
 

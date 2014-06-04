@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
@@ -18,14 +19,14 @@ namespace Celeriq.Utilities
             if (!m_Lock.TryEnterReadLock(TimeOut))
             {
                 throw new Exception("Could not get reader lock: " +
-                    "LockID=" + rwl.LockID +
-                    ((rwl.ObjectId == Guid.Empty) ? string.Empty : ", ObjectID=" + rwl.ObjectId) +
+                    "LockID=" + m_Lock.LockID +
+                    ((m_Lock.ObjectId == Guid.Empty) ? string.Empty : ", ObjectID=" + m_Lock.ObjectId) +
                     ", CurrentReadCount=" + m_Lock.CurrentReadCount +
                     ", WaitingReadCount=" + m_Lock.WaitingReadCount + 
                     ", WaitingWriteCount=" + m_Lock.WaitingWriteCount +
                     ", IsWriteLockHeld=" + m_Lock.IsWriteLockHeld +
                     ", HoldingThread=" + m_Lock.HoldingThreadId +
-                    ", TraceInfo=" + m_Lock.TraceInfo +
+                    ", TraceInfo=" + string.Join("|", m_Lock.TraceInfo.ToList()) +
                     ", WriteHeldTime=" + m_Lock.WriteHeldTime);
             }
         }
@@ -43,7 +44,10 @@ namespace Celeriq.Utilities
             {
                 if (disposing && m_Lock != null)
                 {
-                    m_Lock.ExitReadLock();
+                    lock (m_Lock)
+                    {
+                        m_Lock.ExitReadLock();
+                    }
                 }
             }
             m_Disposed = true;
@@ -71,22 +75,27 @@ namespace Celeriq.Utilities
             if (!m_Lock.TryEnterWriteLock(TimeOut))
             {
                 _inError = true;
+
                 throw new Exception("Could not get writer lock: " +
-                    "LockID=" + rwl.LockID +
-                    ((rwl.ObjectId == Guid.Empty) ? string.Empty : ", ObjectID=" + rwl.ObjectId) +
+                    "LockID=" + m_Lock.LockID +
+                    ((m_Lock.ObjectId == Guid.Empty) ? string.Empty : ", ObjectID=" + m_Lock.ObjectId) +
                     (callerObject == Guid.Empty ? string.Empty : ", CallerID=" + callerObject) +
                     ", CurrentReadCount=" + m_Lock.CurrentReadCount +
                     ", WaitingReadCount=" + m_Lock.WaitingReadCount + 
                     ", WaitingWriteCount=" + m_Lock.WaitingWriteCount +
                     ", IsWriteLockHeld=" + m_Lock.IsWriteLockHeld +
                     ", HoldingThread=" + m_Lock.HoldingThreadId +
-                    ", TraceInfo=" + m_Lock.TraceInfo +
+                    ", TraceInfo=" + string.Join("|", m_Lock.TraceInfo.ToList()) +
                     ", WriteHeldTime=" + m_Lock.WriteHeldTime);
             }
 
-            rwl.TraceInfo = traceInfo;
-            rwl.WriteLockHeldTime = DateTime.Now;
-            rwl.HoldingThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
+            lock (m_Lock)
+            {
+                //Save stack history of trace info
+                m_Lock.TraceInfo.Push(traceInfo);
+                m_Lock.WriteLockHeldTime = DateTime.Now;
+                m_Lock.HoldingThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
+            }
         }
 
         public void Dispose()
@@ -98,17 +107,27 @@ namespace Celeriq.Utilities
         /// <summary />
         protected virtual void Dispose(bool disposing)
         {
-            if (!m_Disposed && disposing)
+            try
             {
-                if (!_inError)
+                if (!m_Disposed && m_Lock != null && disposing)
                 {
-                    m_Lock.WriteLockHeldTime = null;
-                    m_Lock.TraceInfo = null;
-                    m_Lock.HoldingThreadId = null;
+                    lock (m_Lock)
+                    {
+                        if (!_inError)
+                        {
+                            m_Lock.WriteLockHeldTime = null;
+                            if (m_Lock.TraceInfo.Count > 0) m_Lock.TraceInfo.Pop();
+                            m_Lock.HoldingThreadId = null;
+                        }
+                        m_Lock.ExitWriteLock();
+                    }
                 }
-                m_Lock.ExitWriteLock();
+                m_Disposed = true;
             }
-            m_Disposed = true;
+            catch (Exception ex)
+            {
+                Logger.LogError(ex);
+            }
         }
     }
 
@@ -119,6 +138,7 @@ namespace Celeriq.Utilities
         {
             this.LockID = Guid.NewGuid();
             this.ObjectId = objectId;
+            this.TraceInfo = new Stack<string>();
         }
 
         public CeleriqLock(LockRecursionPolicy recursionPolicy)
@@ -143,7 +163,7 @@ namespace Celeriq.Utilities
         }
 
         public DateTime? WriteLockHeldTime { get; internal set; }
-        public string TraceInfo { get; internal set; }
+        public Stack<string> TraceInfo { get; internal set; }
         public Guid LockID { get; private set; }
         public Guid ObjectId { get; private set; }
         public int? HoldingThreadId { get; internal set; }
