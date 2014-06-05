@@ -123,15 +123,10 @@ namespace Celeriq.RepositoryAPI
                 _system.NotifyLoad(_repositoryDefinition.ID, timer.Elapsed, _list.Count);
 
                 double avgTime = 0;
-                if (timer.Elapsed > 0) avgTime = (_list.Count / (timer.Elapsed / 1000.0));
+                if (_list.Count > 0) avgTime = ((timer.Elapsed * 1.0) / _list.Count);
                 Logger.LogInfo("Repository Data Loaded: ID=" + _repositoryDefinition.ID.ToString() + ", Elapsed=" + timer.Elapsed + ", Count=" + _list.Count + ", Avg=" + avgTime.ToString("#####0.0"));
                 AddProfileItem(RepositoryActionConstants.LoadData, timer, _list.Count);
             }
-            //case(System.Text.DecoderFallbackException ex)
-            //{
-            //    Logger.LogError("Repository Loading Error\n" + ex.ToString());
-            //    throw;
-            //}
             catch (Exception ex)
             {
                 Logger.LogError("Repository Loading Error\n" + ex.ToString());
@@ -1477,6 +1472,10 @@ namespace Celeriq.RepositoryAPI
         private bool _needStatUpdate = false;
         public void FlushCache(bool useMemory = false)
         {
+            //For now we do not need this 2014/6/5
+            //It was just useless stats anyway
+            return;
+
             try
             {
                 if (_needStatUpdate)
@@ -1488,13 +1487,13 @@ namespace Celeriq.RepositoryAPI
                     using (var q = new AcquireWriterLock(this.SyncObject, "FlushCache", _repositoryDefinition.ID))
                     {
                         this.RemotingObject.ItemCount = _list.Count;
-                        if (useMemory)
-                        {
-                            //if (_list.Count > 10000) //For big repositories we do not want max out memory so buffer to disk
-                            //    this.RemotingObject.DataMemorySize = ObjectHelper.SizeOf(_list, true);
-                            //else
-                            //    this.RemotingObject.DataMemorySize = ObjectHelper.SizeOf(_list);
-                        }
+                        //if (useMemory)
+                        //{
+                        //    //if (_list.Count > 10000) //For big repositories we do not want max out memory so buffer to disk
+                        //    //    this.RemotingObject.DataMemorySize = ObjectHelper.SizeOf(_list, true);
+                        //    //else
+                        //    //    this.RemotingObject.DataMemorySize = ObjectHelper.SizeOf(_list);
+                        //}
 
                         _dataProvider.UpdateRepositoryStats(new RepositoryStatItem
                         {

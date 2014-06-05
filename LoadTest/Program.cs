@@ -15,6 +15,8 @@ namespace LoadTest
         private static UserCredentials _credentials = null;
         private static DataSetup _data = new DataSetup();
 
+        ///server:16.113.65.49 /create:0 /delete:0 /query:2 /single:2 /loadfile:"c:\temp\celeriq-load.txt"
+
         static void Main(string[] args)
         {
 

@@ -543,13 +543,13 @@ namespace Celeriq.Server.Core
                     _lastGarbageCollection = DateTime.Now;
                 }
 
-                //Every N minutes make sure cache is written
-                if (DateTime.Now.Subtract(_lastCache).TotalMinutes >= HouseKeepingInterval)
-                {
-                    _lastCache = DateTime.Now; //Just in case error
-                    _manager.FlushCache();
-                    _lastCache = DateTime.Now;
-                }
+                ////Every N minutes make sure cache is written
+                //if (DateTime.Now.Subtract(_lastCache).TotalMinutes >= HouseKeepingInterval)
+                //{
+                //    _lastCache = DateTime.Now; //Just in case error
+                //    _manager.FlushCache();
+                //    _lastCache = DateTime.Now;
+                //}
 
                 //For now do not automatically compress. Causes timeouts in production if repository is still being used.
                 //if (DateTime.Now.Subtract(_lastCompress).TotalMinutes >= CompressInterval)

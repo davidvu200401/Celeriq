@@ -426,6 +426,12 @@ namespace Celeriq.Server.Core
                 timer.Stop();
                 Logger.LogInfo("Manager.UpdateData: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
             }
+            catch (System.Text.DecoderFallbackException ex)
+            {
+                Logger.LogError("Repository Corrupt:UpdateData\n" + ex.ToString());
+                errorList.Add("The repository is corrupt! ID: " + repositoryId);
+                this.RemoveRepository(repositoryId);
+            }
             catch (Exception ex)
             {
                 Logger.LogError(ex, "RepositoryId: " + repositoryId);
@@ -519,6 +525,12 @@ namespace Celeriq.Server.Core
 
                 timer.Stop();
                 Logger.LogInfo("Manager.Query: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
+            }
+            catch (System.Text.DecoderFallbackException ex)
+            {
+                Logger.LogError("Repository Corrupt:Query\n" + ex.ToString());
+                retval.ErrorList = new string[] { "The repository is corrupt! ID: " + repositoryId };
+                this.RemoveRepository(repositoryId);
             }
             catch (Exception ex)
             {
@@ -794,6 +806,10 @@ namespace Celeriq.Server.Core
 
         public void FlushCache()
         {
+            //For now we do not need this 2014/6/5
+            //It was just useless stats anyway
+            return;
+
             try
             {
                 Logger.LogDebug("Manager.FlushCache Starting");
@@ -813,11 +829,13 @@ namespace Celeriq.Server.Core
                         //t2.Stop();
                         //Console.WriteLine("FlushCache list: page: " + page + ", time:" + t2.ElapsedMilliseconds);
 
-                        var options = new ParallelOptions { MaxDegreeOfParallelism = 2 };
-                        Parallel.ForEach(tempList, options, item =>
-                        {
-                            item.FlushCache(true);
-                        });
+                        tempList.ForEach(item => item.FlushCache(true));
+
+                        //var options = new ParallelOptions { MaxDegreeOfParallelism = 2 };
+                        //Parallel.ForEach(tempList, options, item =>
+                        //{
+                        //    item.FlushCache(true);
+                        //});
                     }
 
                     //Get next page...loop until run out of items
