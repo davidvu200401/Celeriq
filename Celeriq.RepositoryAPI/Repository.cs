@@ -127,6 +127,11 @@ namespace Celeriq.RepositoryAPI
                 Logger.LogInfo("Repository Data Loaded: ID=" + _repositoryDefinition.ID.ToString() + ", Elapsed=" + timer.Elapsed + ", Count=" + _list.Count + ", Avg=" + avgTime.ToString("#####0.0"));
                 AddProfileItem(RepositoryActionConstants.LoadData, timer, _list.Count);
             }
+            //case(System.Text.DecoderFallbackException ex)
+            //{
+            //    Logger.LogError("Repository Loading Error\n" + ex.ToString());
+            //    throw;
+            //}
             catch (Exception ex)
             {
                 Logger.LogError("Repository Loading Error\n" + ex.ToString());

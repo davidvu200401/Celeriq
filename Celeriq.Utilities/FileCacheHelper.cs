@@ -307,7 +307,7 @@ namespace Celeriq.Utilities
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex, "lastPosition=" + lastPosition + " , absolutePosition=" + absolutePosition);
+                Logger.LogError(ex, "filename=" + fileName + ", lastPosition=" + lastPosition + " , absolutePosition=" + absolutePosition);
                 throw;
             }
         }
