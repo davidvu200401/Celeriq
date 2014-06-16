@@ -28,7 +28,7 @@ namespace Celeriq.RepositoryAPI.Test
             //LoadBigRepository(credentials);
             //TestBigRepository(credentials);
 
-            DeleteRepository(credentials);
+            //DeleteRepository(credentials);
             //CreateAndLoadItems(credentials);
             //QueryRepository(credentials);
             //ClearRepository(credentials);
@@ -46,10 +46,9 @@ namespace Celeriq.RepositoryAPI.Test
 
             //LoadAllInMem();
 
-            //QueryRepository(credentials);
+            QueryRepository(credentials);
             //System.Threading.Thread.Sleep(20000);
             GetStats(credentials);
-
 
             Console.WriteLine("Press any key...");
             Console.ReadLine();

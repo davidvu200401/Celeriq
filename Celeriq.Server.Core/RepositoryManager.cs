@@ -82,38 +82,8 @@ namespace Celeriq.Server.Core
                 else if (_storage == StorageTypeConstants.File)
                 {
                     var files = Directory.GetFiles(ConfigHelper.DataPath, "*.celeriq");
-                    var options = new ParallelOptions ();//{ MaxDegreeOfParallelism = 1 };
-                    Parallel.ForEach(files, options, file =>
-                    {
-                        try
-                        {
-                            var repositoryDef = new RepositorySchema();
-                            repositoryDef.Load(file);
-                            repositoryDef.CachePath = Path.Combine(ConfigHelper.DataPath, repositoryDef.ID.ToString());
-                            var repository = new Celeriq.RepositoryAPI.Repository(0, repositoryDef, ConfigHelper.MasterKeys, _system);
-                            var remoteItem = new RemotingObjectCache() { ServiceInstance = repository, Repository = repositoryDef };
-                            remoteItem.VersionHash = repositoryDef.VersionHash;
-                            repository.RemotingObject = remoteItem;
-                            remoteItem.DataDiskSize = repository.GetDataDiskSize(((SystemCore)_system).RootUser);
-                            repository.RefreshStatsFromCache();
-                            lock (_repositoryList)
-                            {
-                                if (_repositoryList.ContainsKey(repositoryDef.ID))
-                                    Logger.LogWarning("OnLoad Duplicate: ID=" + repositoryDef.ID);
-                                else
-                                    _repositoryList.Add(repositoryDef.ID, remoteItem);
-                            }
-                            if (_repositoryList.Count % 500 == 0)
-                            {
-                                Logger.LogInfo("Manager load files (" + _repositoryList.Count + " / " + files.Length + ")");
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.LogError(ex, "File: " + file);
-                        }
-                    });
-
+                    var t = new FileThreadedLoader(files, _system, _repositoryList);
+                    //System.Threading.ThreadPool.QueueUserWorkItem(delegate { t.Run(); }, null);
                 }
 
                 timer.Stop();
@@ -737,37 +707,24 @@ namespace Celeriq.Server.Core
             }
         }
 
-        //public ProfileItem[] GetProfile(Guid repositoryId, UserCredentials credentials, long lastProfileId)
-        //{
-        //    try
-        //    {
-        //        var repository = GetRepository(repositoryId);
-        //        return repository.ServiceInstance.GetProfile(credentials, lastProfileId);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logger.LogError(ex);
-        //        throw;
-        //    }
-        //}
-
         private RemotingObjectCache GetRepository(Guid repositoryId)
         {
             try
             {
-                //Logger.LogDebug("Manager.GetRepository Starting: ID=" + repositoryId);
-                //var timer = new Stopwatch();
-                //timer.Start();
-
                 RemotingObjectCache retval = null;
                 using (var q = new AcquireReaderLock(this.SyncObject))
                 {
                     if (_repositoryList.ContainsKey(repositoryId))
                         retval = _repositoryList[repositoryId];
+                    else
+                    {
+                        //If not in list then check disk. If did just reload then it is in the list
+                        if (FileThreadedLoader.LoadFile(repositoryId, _system, _repositoryList))
+                            retval = _repositoryList[repositoryId];
+                        else
+                            retval = null;
+                    }
                 }
-
-                //timer.Stop();
-                //Logger.LogInfo("Manager.GetRepository: ID=" + repositoryId + ", Elapsed=" + timer.ElapsedMilliseconds);
                 return retval;
             }
             catch (Exception ex)
@@ -804,52 +761,80 @@ namespace Celeriq.Server.Core
             }
         }
 
-        public void FlushCache()
+        #region FileThreadedLoader
+        private class FileThreadedLoader
         {
-            //For now we do not need this 2014/6/5
-            //It was just useless stats anyway
-            return;
+            private string[] _files = null;
+            private ISystemServerCore _system = null;
+            private Dictionary<Guid, RemotingObjectCache> _repositoryList = null;
 
-            try
+            public FileThreadedLoader(string[] files, ISystemServerCore system, Dictionary<Guid, RemotingObjectCache> repositoryList)
             {
-                Logger.LogDebug("Manager.FlushCache Starting");
-                var timer = new Stopwatch();
-                timer.Start();
+                _files = files;
+                _system = system;
+                _repositoryList = repositoryList;
+            }
 
-                var page = 0;
-                var rpp = 10;
-                List<RemotingObjectCache> tempList = null;
-                do
+            public void Run()
+            {
+                foreach (var file in _files)
                 {
-                    using (var q = new AcquireWriterLock(this.SyncObject, "FlushCache Manager"))
+                    LoadFile(file, _system, _repositoryList);
+                    if (_repositoryList.Count % 200 == 0)
                     {
-                        //var t2 = new Stopwatch();
-                        //t2.Start();
-                        tempList = _repositoryList.Values.ToList().Skip(page * rpp).Take(rpp).ToList();
-                        //t2.Stop();
-                        //Console.WriteLine("FlushCache list: page: " + page + ", time:" + t2.ElapsedMilliseconds);
-
-                        tempList.ForEach(item => item.FlushCache(true));
-
-                        //var options = new ParallelOptions { MaxDegreeOfParallelism = 2 };
-                        //Parallel.ForEach(tempList, options, item =>
-                        //{
-                        //    item.FlushCache(true);
-                        //});
+                        Logger.LogInfo("Manager load files (" + _repositoryList.Count + " / " + _files.Length + ")");
                     }
-
-                    //Get next page...loop until run out of items
-                    page++;
-                } while (tempList.Count > 0);
-
-                timer.Stop();
-                Logger.LogInfo("Manager.FlushCache: Elapsed=" + timer.ElapsedMilliseconds);
+                }
             }
-            catch (Exception ex)
+
+            public static bool LoadFile(Guid repositoryId, ISystemServerCore system, Dictionary<Guid, RemotingObjectCache> repositoryList)
             {
-                Logger.LogWarning(ex.Message);
+                try
+                {
+                    var file = Path.Combine(ConfigHelper.DataPath, repositoryId + ".celeriq");
+                    if (!File.Exists(file)) return false;
+                    return LoadFile(file, system, repositoryList);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError(ex, "RepositoryId: " + repositoryId);
+                    return false;
+                }
             }
+
+            private static bool LoadFile(string file, ISystemServerCore system, Dictionary<Guid, RemotingObjectCache> repositoryList)
+            {
+                try
+                {
+                    if (!File.Exists(file)) return false;
+                    var repositoryDef = new RepositorySchema();
+                    repositoryDef.Load(file);
+                    repositoryDef.CachePath = Path.Combine(ConfigHelper.DataPath, repositoryDef.ID.ToString());
+                    var repository = new Celeriq.RepositoryAPI.Repository(0, repositoryDef, ConfigHelper.MasterKeys, system);
+                    var remoteItem = new RemotingObjectCache() { ServiceInstance = repository, Repository = repositoryDef };
+                    remoteItem.VersionHash = repositoryDef.VersionHash;
+                    repository.RemotingObject = remoteItem;
+                    remoteItem.DataDiskSize = repository.GetDataDiskSize(((SystemCore)system).RootUser);
+                    repository.RefreshStatsFromCache();
+                    lock (repositoryList)
+                    {
+                        //It may have already been loaded by a direct request (Query)
+                        if (repositoryList.ContainsKey(repositoryDef.ID))
+                            Logger.LogWarning("OnLoad Duplicate: ID=" + repositoryDef.ID);
+                        else
+                            repositoryList.Add(repositoryDef.ID, remoteItem);
+                    }
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError(ex, "File: " + file);
+                    return false;
+                }
+            }
+
         }
+        #endregion
 
     }
 }
