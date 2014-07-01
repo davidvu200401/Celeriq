@@ -264,6 +264,12 @@ namespace Celeriq.Server.Interfaces
             set { SetValue("FromEmail", value); }
         }
 
+        public static bool KeywordSearchLiteral
+        {
+            get { return GetValue("KeywordSearchLiteral", false); }
+            set { SetValue("KeywordSearchLiteral", value); }
+        }
+
         #endregion
 
     }

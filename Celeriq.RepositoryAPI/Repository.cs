@@ -885,6 +885,8 @@ namespace Celeriq.RepositoryAPI
 
                     #region Then do text search
 
+                    query.Keyword = (query.Keyword + string.Empty).Trim();
+
                     //var keywordSearchablelist = _repositoryDefinition.FieldList.Where(x => x.AllowTextSearch && x.DataType == RepositorySchema.DataTypeConstants.String).ToList();
                     //if (!string.IsNullOrEmpty(query.Keyword) && keywordSearchablelist.Count > 0)
                     //{
@@ -906,13 +908,22 @@ namespace Celeriq.RepositoryAPI
 
                     if (!string.IsNullOrEmpty(query.Keyword) && _repositoryDefinition.FieldList.Any(x => x.AllowTextSearch))
                     {
-                        var keywordList = query.Keyword.Split(new char[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                        System.Linq.Expressions.Expression<Func<DataItemExtension, bool>> w = x => false;
-                        foreach (var kw in keywordList)
+                        if (ConfigHelper.KeywordSearchLiteral)
                         {
-                            w = w.Or(x => x.Keyword.Contains(kw, StringComparison.OrdinalIgnoreCase));
+                            //Search for the exact phrase entered
+                            queriedList = queriedList.Where(x => x.Keyword.Contains(query.Keyword, StringComparison.OrdinalIgnoreCase));
                         }
-                        queriedList = queriedList.Where(w.Compile());
+                        else
+                        {
+                            //Break the keyword up into words and search for each
+                            var keywordList = query.Keyword.Split(new char[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                            System.Linq.Expressions.Expression<Func<DataItemExtension, bool>> w = x => false;
+                            foreach (var kw in keywordList)
+                            {
+                                w = w.Or(x => x.Keyword.Contains(kw, StringComparison.OrdinalIgnoreCase));
+                            }
+                            queriedList = queriedList.Where(w.Compile());
+                        }
                     }
 
                     #endregion

@@ -130,6 +130,7 @@ namespace Celeriq.WinService
                 Celeriq.Server.Interfaces.ConfigHelper.NotifyEmail = ConfigurationManager.AppSettings["NotifyEmail"];
                 Celeriq.Server.Interfaces.ConfigHelper.FromEmail = ConfigurationManager.AppSettings["FromEmail"];
                 Celeriq.Server.Interfaces.ConfigHelper.DebugEmail = ConfigurationManager.AppSettings["DebugEmail"];
+                Celeriq.Server.Interfaces.ConfigHelper.KeywordSearchLiteral = ((ConfigurationManager.AppSettings["KeywordSearch"] + string.Empty).ToLower() == "literal");
 
                 bool b;
                 if (bool.TryParse(ConfigurationManager.AppSettings["AllowStatistics"], out b))
