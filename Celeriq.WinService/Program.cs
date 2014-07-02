@@ -13,7 +13,7 @@ namespace Celeriq.WinService
 
         private static void Main(string[] args)
         {
-            if (args.Any(x => x == "-console"))
+            if (args.Any(x => x == "-console") || args.Any(x => x == "/console"))
             {
                 var service = new PersistentService();
                 service.Start();

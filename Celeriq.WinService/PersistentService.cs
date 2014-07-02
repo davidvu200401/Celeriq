@@ -124,12 +124,12 @@ namespace Celeriq.WinService
                 if (!int.TryParse(ConfigurationManager.AppSettings["MailServerPort"], out mailPort)) mailPort = 25;
                 Celeriq.Server.Interfaces.ConfigHelper.MailServerPort = mailPort;
 
-                Celeriq.Server.Interfaces.ConfigHelper.MailServer = ConfigurationManager.AppSettings["MailServer"];
-                Celeriq.Server.Interfaces.ConfigHelper.MailServerUsername = ConfigurationManager.AppSettings["MailServerUsername"];
-                Celeriq.Server.Interfaces.ConfigHelper.MailServerPassword = ConfigurationManager.AppSettings["MailServerPassword"];
-                Celeriq.Server.Interfaces.ConfigHelper.NotifyEmail = ConfigurationManager.AppSettings["NotifyEmail"];
-                Celeriq.Server.Interfaces.ConfigHelper.FromEmail = ConfigurationManager.AppSettings["FromEmail"];
-                Celeriq.Server.Interfaces.ConfigHelper.DebugEmail = ConfigurationManager.AppSettings["DebugEmail"];
+                Celeriq.Server.Interfaces.ConfigHelper.MailServer = ConfigurationManager.AppSettings["MailServer"] + string.Empty;
+                Celeriq.Server.Interfaces.ConfigHelper.MailServerUsername = ConfigurationManager.AppSettings["MailServerUsername"] + string.Empty;
+                Celeriq.Server.Interfaces.ConfigHelper.MailServerPassword = ConfigurationManager.AppSettings["MailServerPassword"] + string.Empty;
+                Celeriq.Server.Interfaces.ConfigHelper.NotifyEmail = ConfigurationManager.AppSettings["NotifyEmail"] + string.Empty;
+                Celeriq.Server.Interfaces.ConfigHelper.FromEmail = ConfigurationManager.AppSettings["FromEmail"] + string.Empty;
+                Celeriq.Server.Interfaces.ConfigHelper.DebugEmail = ConfigurationManager.AppSettings["DebugEmail"] + string.Empty;
                 Celeriq.Server.Interfaces.ConfigHelper.KeywordSearchLiteral = ((ConfigurationManager.AppSettings["KeywordSearch"] + string.Empty).ToLower() == "literal");
 
                 bool b;
